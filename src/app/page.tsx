@@ -124,6 +124,7 @@ export default function Home() {
             <FolderIcon label="Email List" color="#c8a8e8" href="#" icon="✉️" />
             <FolderIcon label="Blog" color="#f0c878" href="#" icon="💬" />
             <FolderIcon label="Contact" color="#f09898" href="#" icon="📞" />
+            <FolderIcon label="Love Letter" color="#ff6b8a" href="/love-letter" icon="💌" />
           </div>
 
           {/* Scroll bar area */}
@@ -169,8 +170,7 @@ export default function Home() {
           <div style={{ background: "#d4d4d4", padding: "12px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
             {[
               { label: "Instagram", icon: "📷", href: "https://instagram.com" },
-              { label: "Twitter / X", icon: "🐦", href: "https://twitter.com" },
-              { label: "Facebook",   icon: "💬", href: "https://facebook.com" },
+              { label: "Discord",   icon: "🎮", href: "https://discord.com" },
             ].map(({ label, icon, href }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 style={{ display: "flex", alignItems: "center", gap: 6, background: "#fff", border: "1.5px solid #888", padding: "4px 6px", cursor: "pointer", fontSize: 11, fontWeight: "bold", color: "#000", textDecoration: "none", boxShadow: "1px 1px 0 #000" }}>
@@ -180,6 +180,29 @@ export default function Home() {
             ))}
           </div>
           {/* Bottom bar */}
+          <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+        </div>
+
+        {/* ── Mami Monday Window ── */}
+        <div style={{ position: "absolute", top: 32, left: 690, width: 320, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
+          {/* Title bar */}
+          <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+            <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+            <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>
+              Weekly Feature
+            </div>
+          </div>
+          {/* Content */}
+          <div style={{ background: "#000", padding: "24px 16px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 160 }}>
+            <div className="mami-script">Mami</div>
+            <div className="mami-day">MONDAY</div>
+            <p style={{ color: "#aaa", fontSize: 10, marginTop: 12, textAlign: "center", lineHeight: 1.6 }}>
+              Every Monday we spotlight a Mami. Models, customers, fans — anyone repping the brand. Could be you. 👀
+            </p>
+            <Link href="/love-letter" style={{ marginTop: 12, fontSize: 10, color: "#c084fc", letterSpacing: 2, textTransform: "uppercase", borderBottom: "1px solid #c084fc", paddingBottom: 2 }}>
+              Submit Yourself →
+            </Link>
+          </div>
           <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
         </div>
 
