@@ -88,6 +88,9 @@ export default function Home() {
           </Link>
         ))}
         <div style={{ marginLeft: "auto", fontSize: 11, paddingRight: 8, display: "flex", gap: 12, alignItems: "center" }}>
+          <Link href="/cart" style={{ display: "flex", alignItems: "center", gap: 4, background: "#000", color: "#fff", padding: "1px 7px", fontSize: 11, fontWeight: "bold", border: "1px solid #000", cursor: "pointer" }}>
+            🛒 Cart
+          </Link>
           <span>musclemami.fit</span>
         </div>
       </div>
@@ -147,15 +150,75 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── Right side desktop icons ── */}
+        {/* ── Right side: floppy disks ── */}
         <div style={{ position: "absolute", top: 40, right: 20, display: "flex", flexDirection: "column", gap: 20, alignItems: "center" }}>
           <FloppyDisk label="musclemami.fit" />
           <FloppyDisk label="Drop 001" />
-          <FolderIcon label="New Arrivals" color="#f0c878" href="/shop" style={{ transform: "scale(0.85)" }} />
-          <FolderIcon label="Gym Fits" color="#98d4a8" href="/shop/shirts" style={{ transform: "scale(0.85)" }} />
-          <FolderIcon label="Kicks" color="#a8c4e8" href="/shop/shoes" style={{ transform: "scale(0.85)" }} />
-          <FolderIcon label="Collab Drops" color="#f09898" href="#" style={{ transform: "scale(0.85)" }} />
-          <FolderIcon label="Archives" color="#d0d0d0" href="#" style={{ transform: "scale(0.85)" }} />
+        </div>
+
+        {/* ── Social Media Window ── */}
+        <div style={{ position: "absolute", top: 32, right: 196, width: 160, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
+          {/* Title bar */}
+          <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+            <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+            <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>
+              Connect With Us
+            </div>
+          </div>
+          {/* Content */}
+          <div style={{ background: "#d4d4d4", padding: "12px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
+            {[
+              { label: "Instagram", icon: "📷", href: "https://instagram.com" },
+              { label: "Twitter / X", icon: "🐦", href: "https://twitter.com" },
+              { label: "Facebook",   icon: "💬", href: "https://facebook.com" },
+            ].map(({ label, icon, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: 6, background: "#fff", border: "1.5px solid #888", padding: "4px 6px", cursor: "pointer", fontSize: 11, fontWeight: "bold", color: "#000", textDecoration: "none", boxShadow: "1px 1px 0 #000" }}>
+                <span style={{ fontSize: 14 }}>{icon}</span>
+                {label}
+              </a>
+            ))}
+          </div>
+          {/* Bottom bar */}
+          <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+        </div>
+
+        {/* ── Models Collab Window ── */}
+        <div style={{ position: "absolute", top: 390, left: 120, width: 380, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
+          {/* Title bar */}
+          <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+            <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+            <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>
+              📢 Announcement
+            </div>
+          </div>
+          {/* Dialog body */}
+          <div style={{ background: "#e8e8e8", padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <span style={{ fontSize: 28 }}>📸</span>
+              <div>
+                <p style={{ fontSize: 12, fontWeight: "bold", color: "#000", lineHeight: 1.5 }}>
+                  🔥 Models Wanted — Get Paid to Look Good!
+                </p>
+                <p style={{ fontSize: 10, color: "#444", marginTop: 4, lineHeight: 1.5 }}>
+                  Think you got what it takes to rep Muscle Yummi Mami? Send us your photo catalog and let&apos;s get you paid. We&apos;re building something BIG and we want the right faces on it. Take action — this is YOUR moment. Drop your email and we&apos;ll take it from there! 💸
+                </p>
+              </div>
+            </div>
+            {/* Email input row */}
+            <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
+              <input
+                type="email"
+                placeholder="Enter your email..."
+                style={{ flex: 1, border: "1.5px solid #888", padding: "4px 6px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+              />
+              <button style={{ background: "#000", color: "#fff", border: "1.5px solid #000", padding: "4px 10px", fontSize: 11, fontWeight: "bold", cursor: "pointer", fontFamily: "Geneva, Arial, sans-serif", boxShadow: "1px 1px 0 #555" }}>
+                Apply
+              </button>
+            </div>
+          </div>
+          {/* Bottom bar */}
+          <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
         </div>
 
         {/* ── Bottom desktop icons ── */}
@@ -178,6 +241,16 @@ export default function Home() {
           <DesktopIcon label="Size Guide" href="#">
             <div style={{ width: 28, height: 34, background: "#ffd93d", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📏</div>
           </DesktopIcon>
+        </div>
+
+        {/* ── Cart (top right) ── */}
+        <div style={{ position: "fixed", top: 220, right: 24, zIndex: 100 }}>
+          <Link href="/cart" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, textDecoration: "none" }}>
+            <div style={{ width: 32, height: 32, background: "#fff", border: "1.5px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>
+              🛒
+            </div>
+            <span style={{ fontSize: 10, color: "#fff" }}>Cart</span>
+          </Link>
         </div>
 
         {/* ── Trash (bottom right) ── */}
