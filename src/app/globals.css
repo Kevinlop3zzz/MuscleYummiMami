@@ -41,3 +41,12 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.cereal-icon:hover > div:first-child {
+  transform: translateY(-4px) rotate(-2deg);
+  transition: transform 0.15s ease;
+}
+
+.cereal-icon > div:first-child {
+  transition: transform 0.15s ease;
+}
