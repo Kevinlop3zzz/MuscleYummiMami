@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${greatVibes.variable} ${bebasNeue.variable} h-full`}>
-      <body className="min-h-full">{children}</body>
+    <html lang="en" className={`${greatVibes.variable} ${bebasNeue.variable} h-full`} suppressHydrationWarning>
+      <body className="min-h-full" suppressHydrationWarning>{children}</body>
     </html>
   );
 }

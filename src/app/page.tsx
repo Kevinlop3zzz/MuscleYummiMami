@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface FolderIconProps {
   label: string;
@@ -244,6 +245,41 @@ export default function Home() {
           <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
         </div>
 
+        {/* ── Artist Behind Bars Window ── */}
+        <div style={{ position: "absolute", top: 360, left: 530, width: 380, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
+          {/* Title bar */}
+          <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+            <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+            <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>
+              🎨 New Message
+            </div>
+          </div>
+          {/* Dialog body */}
+          <div style={{ background: "#e8e8e8", padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <span style={{ fontSize: 28 }}>✊</span>
+              <div>
+                <p style={{ fontSize: 12, fontWeight: "bold", color: "#000", lineHeight: 1.5 }}>
+                  Art Doesn&apos;t Stop at Bars.
+                </p>
+                <p style={{ fontSize: 10, color: "#444", marginTop: 6, lineHeight: 1.7 }}>
+                  Know an artist behind bars with real talent? Their story deserves to be on the streets. We collaborate with incarcerated artists — putting their work on our shirts and shoes so the world can feel it. They create. We build the platform. Everyone eats.
+                </p>
+                <p style={{ fontSize: 10, color: "#222", marginTop: 6, fontWeight: "bold", lineHeight: 1.6 }}>
+                  Reach out on their behalf. Let&apos;s get their art out of the cell and onto the culture. 🖤
+                </p>
+              </div>
+            </div>
+            {/* Love Letter redirect */}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 4 }}>
+              <Link href="/love-letter" style={{ background: "#000", color: "#fff", border: "2px solid #000", padding: "6px 18px", fontSize: 11, fontWeight: "bold", letterSpacing: 1, boxShadow: "2px 2px 0 #555", fontFamily: "Geneva, Arial, sans-serif" }}>
+                ✊ Write Us a Love Letter
+              </Link>
+            </div>
+          </div>
+          <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+        </div>
+
         {/* ── Bottom desktop icons ── */}
         <div style={{ position: "absolute", bottom: 24, left: 120, display: "flex", gap: 28, alignItems: "flex-end" }}>
           <DesktopIcon label="Receipts" href="#">
@@ -264,6 +300,18 @@ export default function Home() {
           <DesktopIcon label="Size Guide" href="#">
             <div style={{ width: 28, height: 34, background: "#ffd93d", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📏</div>
           </DesktopIcon>
+        </div>
+
+        {/* ── MMM Logo ── */}
+        <div style={{ position: "fixed", top: 256, right: 88, zIndex: 100, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+          <Image
+            src="/logo.png"
+            alt="Muscle Yummi Mami Logo"
+            width={450}
+            height={450}
+            style={{ borderRadius: "50%" }}
+          />
+          <span style={{ fontSize: 9, color: "#888", letterSpacing: 1, textTransform: "uppercase" }}>MYM</span>
         </div>
 
         {/* ── Cart (top right) ── */}
