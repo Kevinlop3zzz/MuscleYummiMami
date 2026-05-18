@@ -1,5 +1,17 @@
 import { MenuBar, MacWindow } from "@/components/MacWindow";
 import { CerealBox } from "@/components/CerealBox";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shirts",
+  description: "Shop Muscle Yummi Mami custom shirts. Limited drops, original designs, built different. Find your flavor.",
+  keywords: ["custom shirts", "streetwear shirts", "limited edition shirts", "muscle yummi mami shirts"],
+  openGraph: {
+    title: "Shirts — Muscle Yummi Mami",
+    description: "Shop custom shirts. Limited drops, original designs, built different.",
+    url: "https://musclemami.fit/shop/shirts",
+  },
+};
 
 const shirtCereals = [
   { name: "MUSCLE YUMMI", flavor: "Yummi Crunch",      color: "#f4a234", accent: "#c0571a",               emoji: "💪", tagline: "Honey Wheat Blast" },

@@ -1,5 +1,17 @@
 import { MenuBar, MacWindow } from "@/components/MacWindow";
 import { CerealBox } from "@/components/CerealBox";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shoes",
+  description: "Shop Muscle Yummi Mami custom shoes. Limited drops, original designs, built different. Find your sole.",
+  keywords: ["custom shoes", "streetwear shoes", "limited edition sneakers", "muscle yummi mami shoes"],
+  openGraph: {
+    title: "Shoes — Muscle Yummi Mami",
+    description: "Shop custom shoes. Limited drops, original designs, built different.",
+    url: "https://musclemami.fit/shop/shoes",
+  },
+};
 
 const shoeCereals = [
   { name: "MUSCLE YUMMI", flavor: "Kick Krispies",    color: "#f5f0e8", accent: "#cc2222", textColor: "#000",   emoji: "👟", tagline: "Snap Crackle Kick" },

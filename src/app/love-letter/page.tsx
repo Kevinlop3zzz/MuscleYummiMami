@@ -1,4 +1,15 @@
 import { MenuBar } from "@/components/MacWindow";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Love Letter",
+  description: "Write to Muscle Yummi Mami. Customers, fans, and models — tell us what you love, what you want to see, or why you want to work with us.",
+  openGraph: {
+    title: "Love Letter — Muscle Yummi Mami",
+    description: "Write to us. Customers, fans, and models — tell us what MMM means to you.",
+    url: "https://musclemami.fit/love-letter",
+  },
+};
 
 export default function LoveLetterPage() {
   return (

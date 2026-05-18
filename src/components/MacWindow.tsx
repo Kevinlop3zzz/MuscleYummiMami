@@ -57,7 +57,9 @@ export function MenuBar({ active }: { active: string }) {
     { label: "Shirts", href: "/shop/shirts" },
     { label: "Shoes", href: "/shop/shoes" },
     { label: "About", href: "/about" },
+    { label: "The Drop", href: "/the-drop" },
     { label: "Email List", href: "#" },
+    { label: "Terms", href: "/terms" },
   ];
 
   return (

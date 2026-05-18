@@ -11,16 +11,16 @@ interface FolderIconProps {
 
 function FolderIcon({ label, color, href, icon, style }: FolderIconProps) {
   return (
-    <Link href={href} className="desktop-icon" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, cursor: "pointer", ...style }}>
-      <div style={{ position: "relative", width: 64, height: 52 }}>
+    <Link href={href} className="desktop-icon" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 5, cursor: "pointer", ...style }}>
+      <div style={{ position: "relative", width: 76, height: 62 }}>
         {/* Folder tab */}
-        <div style={{ position: "absolute", top: 0, left: 6, width: 22, height: 9, background: color, border: "1.5px solid #000", borderBottom: "none", borderRadius: "2px 2px 0 0" }} />
+        <div style={{ position: "absolute", top: 0, left: 7, width: 26, height: 11, background: color, border: "2px solid rgba(0,0,0,0.6)", borderBottom: "none", borderRadius: "3px 3px 0 0", filter: "brightness(1.2)" }} />
         {/* Folder body */}
-        <div className="folder-body" style={{ position: "absolute", top: 7, left: 0, right: 0, bottom: 0, background: color, border: "1.5px solid #000", borderRadius: "0 3px 3px 3px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>
+        <div className="folder-body" style={{ position: "absolute", top: 9, left: 0, right: 0, bottom: 0, background: color, border: "2px solid rgba(0,0,0,0.6)", borderRadius: "0 4px 4px 4px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, boxShadow: "inset 0 1px 0 rgba(255,255,255,0.3)" }}>
           {icon}
         </div>
       </div>
-      <span style={{ fontSize: 11, color: "#fff", textAlign: "center", padding: "1px 3px", whiteSpace: "nowrap", maxWidth: 80, overflow: "hidden", textOverflow: "ellipsis" }}>
+      <span style={{ fontSize: 11, color: "#fff", textAlign: "center", padding: "1px 4px", whiteSpace: "nowrap", maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis", textShadow: "0 1px 2px rgba(0,0,0,0.8)" }}>
         {label}
       </span>
     </Link>
@@ -75,7 +75,7 @@ function TrashCan() {
 
 export default function Home() {
   return (
-    <div style={{ width: "100vw", minHeight: "100vh", background: "#000", position: "relative", overflow: "hidden", userSelect: "none" }}>
+    <div className="mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", overflow: "hidden", userSelect: "none" }}>
 
       {/* ── Menu Bar ── */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
@@ -83,7 +83,7 @@ export default function Home() {
         <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: 13, marginRight: 8 }}>
           ⌘
         </div>
-        {["Shirts", "Shoes", "About", "Email List", "Blog"].map((item) => (
+        {["Shirts", "Shoes", "About", "Email List", "The Drop"].map((item) => (
           <Link key={item} href={item === "Shirts" ? "/shop/shirts" : item === "Shoes" ? "/shop/shoes" : item === "About" ? "/about" : "#"} style={{ padding: "0 10px", height: 20, display: "flex", alignItems: "center", fontSize: 12, fontWeight: "bold", color: "#000" }}>
             {item}
           </Link>
@@ -118,14 +118,15 @@ export default function Home() {
           </div>
 
           {/* Window content */}
-          <div style={{ background: "#1c1c1c", padding: "24px 20px", display: "flex", flexWrap: "wrap", gap: 28, minHeight: 260 }}>
-            <FolderIcon label="About / Bio" color="#d4b896" href="/about" icon="👤" />
-            <FolderIcon label="Shirts" color="#7ec8a0" href="/shop/shirts" icon="👕" />
-            <FolderIcon label="Shoes" color="#a8c4e8" href="/shop/shoes" icon="👟" />
-            <FolderIcon label="Email List" color="#c8a8e8" href="#" icon="✉️" />
-            <FolderIcon label="Blog" color="#f0c878" href="#" icon="💬" />
-            <FolderIcon label="Contact" color="#f09898" href="#" icon="📞" />
-            <FolderIcon label="Love Letter" color="#ff6b8a" href="/love-letter" icon="💌" />
+          <div style={{ background: "#1e1e1e", padding: "24px 20px", display: "flex", flexWrap: "wrap", gap: 32, minHeight: 260 }}>
+            <FolderIcon label="About / Bio"  color="#e8b86d" href="/about"         icon="👤" />
+            <FolderIcon label="Shirts"        color="#5dbb8a" href="/shop/shirts"   icon="👕" />
+            <FolderIcon label="Shoes"         color="#5b9bd5" href="/shop/shoes"    icon="👟" />
+            <FolderIcon label="Email List"    color="#a87fd4" href="#"              icon="✉️" />
+            <FolderIcon label="The Drop"       color="#e8c84a" href="/the-drop"     icon="💬" />
+            <FolderIcon label="Contact"       color="#e87070" href="#"              icon="📞" />
+            <FolderIcon label="Love Letter"   color="#e8608a" href="/love-letter"   icon="💌" />
+            <FolderIcon label="Terms"         color="#b0b0b0" href="/terms"         icon="📋" />
           </div>
 
           {/* Scroll bar area */}
@@ -142,7 +143,7 @@ export default function Home() {
           <div className="mac-title-bar-inactive" style={{ height: 18, borderBottom: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ fontSize: 9, fontWeight: "bold" }}></span>
           </div>
-          <div style={{ background: "#d0d0d0", padding: "10px 8px", display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
+          <div style={{ background: "#c8d4e8", padding: "10px 8px", display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
             <DesktopIcon label="Lookbook" href="#">
               <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📋</div>
             </DesktopIcon>
@@ -168,7 +169,7 @@ export default function Home() {
             </div>
           </div>
           {/* Content */}
-          <div style={{ background: "#d4d4d4", padding: "12px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ background: "#dce8f5", padding: "12px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
             {[
               { label: "Instagram", icon: "📷", href: "https://instagram.com" },
               { label: "Discord",   icon: "🎮", href: "https://discord.com" },
@@ -194,7 +195,7 @@ export default function Home() {
             </div>
           </div>
           {/* Content */}
-          <div style={{ background: "#000", padding: "24px 16px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 160 }}>
+          <div style={{ background: "#0d0d1a", padding: "24px 16px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 160, backgroundImage: "radial-gradient(circle at 50% 50%, rgba(168,85,247,0.15) 0%, transparent 70%)" }}>
             <div className="mami-script">Mami</div>
             <div className="mami-day">MONDAY</div>
             <p style={{ color: "#aaa", fontSize: 10, marginTop: 12, textAlign: "center", lineHeight: 1.6 }}>
@@ -217,7 +218,7 @@ export default function Home() {
             </div>
           </div>
           {/* Dialog body */}
-          <div style={{ background: "#e8e8e8", padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ background: "#f5f0e8", padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <span style={{ fontSize: 28 }}>📸</span>
               <div>
@@ -255,7 +256,7 @@ export default function Home() {
             </div>
           </div>
           {/* Dialog body */}
-          <div style={{ background: "#e8e8e8", padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ background: "#eef2f0", padding: "16px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <span style={{ fontSize: 28 }}>✊</span>
               <div>
@@ -289,10 +290,10 @@ export default function Home() {
             </div>
           </DesktopIcon>
           <DesktopIcon label="Shirt Designs" href="/shop/shirts">
-            <div style={{ width: 28, height: 34, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>👕</div>
+            <div style={{ width: 28, height: 34, background: "#5dbb8a", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>👕</div>
           </DesktopIcon>
           <DesktopIcon label="Shoe Designs" href="/shop/shoes">
-            <div style={{ width: 28, height: 34, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>👟</div>
+            <div style={{ width: 28, height: 34, background: "#4294e8", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>👟</div>
           </DesktopIcon>
           <DesktopIcon label="MM Lookbook" href="#">
             <div style={{ width: 28, height: 34, background: "#ff6b6b", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📸</div>
