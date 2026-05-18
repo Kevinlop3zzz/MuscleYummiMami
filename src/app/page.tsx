@@ -122,9 +122,9 @@ export default function Home() {
             <FolderIcon label="About / Bio"  color="#e8b86d" href="/about"         icon="👤" />
             <FolderIcon label="Shirts"        color="#5dbb8a" href="/shop/shirts"   icon="👕" />
             <FolderIcon label="Shoes"         color="#5b9bd5" href="/shop/shoes"    icon="👟" />
-            <FolderIcon label="Email List"    color="#a87fd4" href="#"              icon="✉️" />
-            <FolderIcon label="The Drop"       color="#e8c84a" href="/the-drop"     icon="💬" />
-            <FolderIcon label="Contact"       color="#e87070" href="#"              icon="📞" />
+            <FolderIcon label="Email List"    color="#a87fd4" href="#"              icon="🔔" />
+            <FolderIcon label="The Drop"       color="#e8c84a" href="/the-drop"     icon="🗞️" />
+            <FolderIcon label="Contact"       color="#e87070" href="#"              icon="📡" />
             <FolderIcon label="Love Letter"   color="#e8608a" href="/love-letter"   icon="💌" />
             <FolderIcon label="Terms"         color="#b0b0b0" href="/terms"         icon="📋" />
           </div>
@@ -145,7 +145,10 @@ export default function Home() {
           </div>
           <div style={{ background: "#c8d4e8", padding: "10px 8px", display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
             <DesktopIcon label="Lookbook" href="#">
-              <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📋</div>
+              <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📸</div>
+            </DesktopIcon>
+            <DesktopIcon label="Models" href="/love-letter">
+              <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🪞</div>
             </DesktopIcon>
             <DesktopIcon label="Sizes" href="#">
               <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📐</div>
@@ -297,6 +300,12 @@ export default function Home() {
           </DesktopIcon>
           <DesktopIcon label="MM Lookbook" href="#">
             <div style={{ width: 28, height: 34, background: "#ff6b6b", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📸</div>
+          </DesktopIcon>
+          <DesktopIcon label="Models" href="/love-letter">
+            <div style={{ width: 28, height: 34, background: "#c084fc", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🪞</div>
+          </DesktopIcon>
+          <DesktopIcon label="The Drop" href="/the-drop">
+            <div style={{ width: 28, height: 34, background: "#e8c84a", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🗞️</div>
           </DesktopIcon>
           <DesktopIcon label="Size Guide" href="#">
             <div style={{ width: 28, height: 34, background: "#ffd93d", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📏</div>

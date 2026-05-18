@@ -48,7 +48,7 @@ const shoeCereals = [
   { name: "MUSCLE YUMMI", flavor: "Guava Glide",      color: "#ff8fab", accent: "#cc2244",               emoji: "🌺", tagline: "Tropical Glide" },
   { name: "MUSCLE YUMMI", flavor: "Acai Athlete",     color: "#4a0e8f", accent: "#2d0060",               emoji: "💪", tagline: "Amazon Power" },
   { name: "MUSCLE YUMMI", flavor: "Ginger Glide",     color: "#c8922a", accent: "#7a4e10",               emoji: "🫚", tagline: "Spicy Glide" },
-  { name: "MUSCLE YUMMI", flavor: "Chai Chase",       color: "#c4a882", accent: "#7a4a20", textColor: "#3a1500", emoji: "🫖", tagline: "Chai Foot Chase" },
+  { name: "MUSCLE YUMMI", flavor: "Sand Sole",        color: "#20b2aa", accent: "#0d7a75",               emoji: "🌊", tagline: "Sun Kissed" },
   { name: "MUSCLE YUMMI", flavor: "Saffron Sprint",   color: "#ff9f1c", accent: "#c05a00",               emoji: "🌟", tagline: "Golden Sprint" },
   { name: "MUSCLE YUMMI", flavor: "Hibiscus Hustle",  color: "#c2185b", accent: "#880e4f",               emoji: "🌺", tagline: "Floral Hustle" },
   { name: "MUSCLE YUMMI", flavor: "Rose Run",         color: "#e91e8c", accent: "#880e4f",               emoji: "🌹", tagline: "Rose Petal Run" },

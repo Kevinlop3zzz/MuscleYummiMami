@@ -60,7 +60,7 @@ const shirtCereals = [
   { name: "MUSCLE YUMMI", flavor: "Ginger Snap",        color: "#c8922a", accent: "#7a4e10",               emoji: "🫚", tagline: "Spicy Ginger" },
   { name: "MUSCLE YUMMI", flavor: "Chai Charge",        color: "#c4a882", accent: "#7a4a20", textColor: "#3a1500", emoji: "🫖", tagline: "Masala Chai" },
   { name: "MUSCLE YUMMI", flavor: "Nutmeg Nourish",     color: "#c47820", accent: "#7a3e10",               emoji: "🌰", tagline: "Holiday Spice" },
-  { name: "MUSCLE YUMMI", flavor: "Cardamom Crunch",    color: "#8fbc8f", accent: "#2e6b2e", textColor: "#1a3a10", emoji: "🌿", tagline: "Nordic Spice" },
+  { name: "MUSCLE YUMMI", flavor: "Salt & Sand",         color: "#20b2aa", accent: "#0d7a75",               emoji: "🌊", tagline: "Sun Kissed" },
   { name: "MUSCLE YUMMI", flavor: "Saffron Swirl",      color: "#ff9f1c", accent: "#c05a00",               emoji: "🌟", tagline: "Golden Saffron" },
   { name: "MUSCLE YUMMI", flavor: "Hibiscus Hit",       color: "#c2185b", accent: "#880e4f",               emoji: "🌺", tagline: "Hibiscus Tea" },
   { name: "MUSCLE YUMMI", flavor: "Rose Rush",          color: "#e91e8c", accent: "#880e4f",               emoji: "🌹", tagline: "Rose Petal" },
