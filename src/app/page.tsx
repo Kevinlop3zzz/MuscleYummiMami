@@ -112,7 +112,7 @@ export default function Home() {
   return (
     <>
     {/* ══ DESKTOP LAYOUT ══ */}
-    <div className="hidden md:block mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", userSelect: "none" }}>
+    <div className="hidden md:block mac-desktop" style={{ width: "100vw", minWidth: 1280, minHeight: "100vh", position: "relative", userSelect: "none" }}>
 
       {/* ── Menu Bar ── */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
@@ -227,7 +227,7 @@ export default function Home() {
         </div>
 
         {/* ── Mami Monday Window ── */}
-        <div style={{ position: "absolute", top: 32, left: 690, width: 320, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
+        <div style={{ position: "absolute", top: 32, left: 690, width: "clamp(200px, 17vw, 320px)", border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
           {/* Title bar */}
           <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
             <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
@@ -349,7 +349,7 @@ export default function Home() {
             height={450}
             loading="eager"
             priority
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: "50%", width: "clamp(220px, 21vw, 380px)", height: "auto" }}
           />
           <span style={{ fontSize: 9, color: "#888", letterSpacing: 1, textTransform: "uppercase" }}>MYM</span>
         </div>
