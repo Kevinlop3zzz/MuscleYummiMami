@@ -3,25 +3,17 @@ import { NextRequest, NextResponse } from "next/server";
 const GOOGLE_SHEET_URL =
   process.env.MODEL_SHEET_URL || "https://script.google.com/macros/s/AKfycbxWcPCCuiHc5qg5OlJhL__CnoD6YAPomxGn3z_U8vZhTEy86wclc3YyTBtDsCjUAI_XaQ/exec";
 
-// Google Apps Script returns a 302 redirect — Node.js fetch changes POST to GET on 302,
-// dropping the body. This helper manually follows the redirect keeping the POST body intact.
-// The second fetch uses redirect:"follow" so any further redirects are handled automatically.
-// AbortSignal.timeout enforces a 10s total cap so the serverless function never hangs.
+// Google Apps Script processes the POST body before issuing a 302 redirect.
+// The data is already saved by the time the redirect fires, so we just follow
+// it as a plain GET — exactly what browsers and PowerShell do automatically.
 async function postToScript(url: string, body: object): Promise<Response> {
-  const signal = AbortSignal.timeout(10000);
-  const options: RequestInit = {
+  return fetch(url, {
     method: "POST",
     headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(body),
-    redirect: "manual",
-    signal,
-  };
-  const res = await fetch(url, options);
-  if (res.status >= 300 && res.status < 400) {
-    const location = res.headers.get("location");
-    if (location) return fetch(location, { ...options, redirect: "follow" });
-  }
-  return res;
+    redirect: "follow",
+    signal: AbortSignal.timeout(10000),
+  });
 }
 
 export async function POST(req: NextRequest) {
