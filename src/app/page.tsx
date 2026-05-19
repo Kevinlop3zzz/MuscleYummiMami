@@ -80,7 +80,7 @@ function LockedFloppyDisk() {
         </div>
       </div>
       <span style={{ fontSize: 8, color: "#444", textAlign: "center", maxWidth: 60, lineHeight: 1.3, fontStyle: "italic" }}>
-        Inspired by Ari Saal Forman
+        Website inspired by Ari Saal Forman
       </span>
     </div>
   );
@@ -156,7 +156,7 @@ export default function Home() {
             <FolderIcon label="About / Bio"  color="#e8b86d" href="/about"         icon="👤" />
             <FolderIcon label="Shirts"        color="#5dbb8a" href="/shop/shirts"   icon="👕" />
             <FolderIcon label="Shoes"         color="#5b9bd5" href="/shop/shoes"    icon="👟" />
-            <FolderIcon label="Email List"    color="#a87fd4" href="#"              icon="🔔" />
+            <FolderIcon label="Email List"    color="#a87fd4" href="/email-list"    icon="🔔" />
             <FolderIcon label="The Drop"       color="#e8c84a" href="/the-drop"     icon="🗞️" />
             <FolderIcon label="Contact"       color="#e87070" href="#"              icon="📡" />
             <FolderIcon label="Love Letter"   color="#e8608a" href="/love-letter"   icon="💌" />
@@ -192,13 +192,13 @@ export default function Home() {
 
         {/* ── Right side: floppy disks ── */}
         <div style={{ position: "absolute", top: 40, right: 20, display: "flex", flexDirection: "column", gap: 20, alignItems: "center" }}>
-          <FloppyDisk label="musclemami.fit" />
+          <FloppyDisk label="MuscleYummiMami" />
           <FloppyDisk label="Drop 001" />
           <LockedFloppyDisk />
         </div>
 
         {/* ── Social Media Window ── */}
-        <div style={{ position: "absolute", top: 32, right: 196, width: 160, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
+        <div style={{ position: "absolute", top: 32, right: 244, width: 160, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
           {/* Title bar */}
           <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
             <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
@@ -209,8 +209,8 @@ export default function Home() {
           {/* Content */}
           <div style={{ background: "#dce8f5", padding: "12px 10px", display: "flex", flexDirection: "column", gap: 8 }}>
             {[
-              { label: "Instagram", icon: "📷", href: "https://instagram.com" },
-              { label: "Discord",   icon: "🎮", href: "https://discord.com" },
+              { label: "Instagram", icon: "📷", href: "https://www.instagram.com/muscle.yummi.mami.fit_models/" },
+              { label: "Discord",   icon: "🎮", href: "https://discord.gg/Du7PV4AwqE" },
             ].map(({ label, icon, href }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                 style={{ display: "flex", alignItems: "center", gap: 6, background: "#fff", border: "1.5px solid #888", padding: "4px 6px", cursor: "pointer", fontSize: 11, fontWeight: "bold", color: "#000", textDecoration: "none", boxShadow: "1px 1px 0 #000" }}>
@@ -362,12 +362,12 @@ export default function Home() {
         </div>
 
         {/* ── Cart (top right) ── */}
-        <div style={{ position: "fixed", top: 220, right: 24, zIndex: 100 }}>
+        <div style={{ position: "fixed", top: 124, right: 176, zIndex: 100 }}>
           <Link href="/cart" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, textDecoration: "none" }}>
             <div style={{ width: 32, height: 32, background: "#fff", border: "1.5px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>
               🛒
             </div>
-            <span style={{ fontSize: 10, color: "#fff" }}>Cart</span>
+            <span style={{ fontSize: 10, color: "#000" }}>Cart</span>
           </Link>
         </div>
 
