@@ -89,10 +89,10 @@ export default function SizesPage() {
                       Heavyweight Cotton
                     </p>
                     <p style={{ fontSize: 9, color: "#444", lineHeight: 1.7 }}>
-                      6oz+ thick cotton — the same quality as Pro Club. Built to last through washes, workouts, and everyday wear. Full premium graphics, deep colors, and a structured feel that holds its shape.
+                      6oz+ thick cotton — built to last through washes, workouts, and everyday wear. Full premium graphics, deep colors, and a structured feel that holds its shape drop after drop.
                     </p>
                     <div style={{ borderTop: "1px solid #e0d0a0", paddingTop: 8, display: "flex", flexDirection: "column", gap: 4 }}>
-                      {["✅ Heavy 6oz+ cotton", "✅ Full graphic prints", "✅ Built to last", "✅ Pro Club quality feel"].map(item => (
+                      {["✅ Heavy 6oz+ cotton", "✅ Full graphic prints", "✅ Built to last", "✅ Structured — holds its shape"].map(item => (
                         <span key={item} style={{ fontSize: 9, color: "#7a5500" }}>{item}</span>
                       ))}
                     </div>
