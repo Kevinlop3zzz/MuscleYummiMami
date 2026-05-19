@@ -66,17 +66,19 @@ export function MenuBar({ active }: { active: string }) {
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0, fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif" }}>
-      <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, marginRight: 8 }}>👑</div>
-      {links.map((l) => (
-        <Link
-          key={l.label}
-          href={l.href}
-          style={{ padding: "0 10px", height: 20, display: "flex", alignItems: "center", fontSize: 12, fontWeight: l.label === active ? "bold" : "normal", color: "#000", background: l.label === active ? "#000" : "transparent", color: l.label === active ? "#fff" : "#000" }}
-        >
-          {l.label}
-        </Link>
-      ))}
-      <div style={{ marginLeft: "auto", fontSize: 11, paddingRight: 8 }}>
+      <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, marginRight: 8, flexShrink: 0 }}>👑</div>
+      <div className="mobile-menu-scroll" style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 0 }}>
+        {links.map((l) => (
+          <Link
+            key={l.label}
+            href={l.href}
+            style={{ padding: "0 10px", height: 20, display: "flex", alignItems: "center", fontSize: 12, fontWeight: l.label === active ? "bold" : "normal", color: l.label === active ? "#fff" : "#000", background: l.label === active ? "#000" : "transparent", whiteSpace: "nowrap", flexShrink: 0 }}
+          >
+            {l.label}
+          </Link>
+        ))}
+      </div>
+      <div style={{ fontSize: 11, paddingRight: 8, flexShrink: 0 }}>
         <span>musclemami.fit</span>
       </div>
     </div>

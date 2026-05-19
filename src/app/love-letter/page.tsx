@@ -59,7 +59,7 @@ export default function LoveLetterPage() {
     <div style={{ width: "100vw", minHeight: "100vh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
       <MenuBar active="Love Letter" />
 
-      <div style={{ paddingTop: 48, padding: "48px 60px 60px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div className="mobile-page-padding" style={{ paddingTop: 48, padding: "48px 60px 60px", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
         {/* Breadcrumb */}
         <div style={{ color: "#888", fontSize: 10, marginBottom: 16, alignSelf: "flex-start" }}>

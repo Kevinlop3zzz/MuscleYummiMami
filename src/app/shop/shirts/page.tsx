@@ -73,14 +73,14 @@ export default function ShirtsPage() {
     <div style={{ width: "100vw", minHeight: "100vh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
       <MenuBar active="Shirts" />
 
-      <div style={{ paddingTop: 28, padding: "28px 60px 60px" }}>
+      <div style={{ paddingTop: 28, padding: "28px 20px 60px" }}>
         <div style={{ color: "#888", fontSize: 10, marginBottom: 12, paddingTop: 28 }}>
           💾 musclemami.fit &nbsp;▶&nbsp; Shop &nbsp;▶&nbsp; Shirts
         </div>
 
         <div style={{ position: "relative" }}>
           <MacWindow title="MUSCLE YUMMI MAMI — SHIRTS" itemCount={shirtCereals.length}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 20, justifyContent: "center" }}>
               {shirtCereals.map((box) => (
                 <CerealBox
                   key={box.flavor}

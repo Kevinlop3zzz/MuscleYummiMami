@@ -110,10 +110,10 @@ function TrashCan() {
 
 export default function Home() {
   return (
-    <div className="mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", overflow: "hidden", userSelect: "none" }}>
+    <div className="mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", userSelect: "none" }}>
 
       {/* ── Menu Bar ── */}
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
+      <div className="desktop-only" style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
         {/* Apple-style logo */}
         <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, marginRight: 8 }}>
           👑
@@ -132,7 +132,7 @@ export default function Home() {
       </div>
 
       {/* ── Desktop ── */}
-      <div style={{ paddingTop: 20, width: "100%", minHeight: "100vh", position: "relative" }}>
+      <div className="desktop-only" style={{ paddingTop: 20, width: "100%", minHeight: "100vh", position: "relative" }}>
 
         {/* ── Main Finder Window ── */}
         <div style={{ position: "absolute", top: 30, left: 120, width: 540, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
@@ -368,6 +368,173 @@ export default function Home() {
         </div>
 
       </div>
+
+      {/* ── Mobile Layout ── */}
+      <div className="mobile-only" style={{ flexDirection: "column", width: "100%", minHeight: "100vh" }}>
+
+        {/* Mobile fixed header */}
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 48, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 12px" }}>
+          <span style={{ fontSize: 18 }}>👑</span>
+          <span style={{ flex: 1, textAlign: "center", fontSize: 11, fontWeight: "bold", letterSpacing: 1 }}>MUSCLE YUMMI MAMI</span>
+          <Link href="/cart" style={{ fontSize: 18 }}>🛒</Link>
+        </div>
+
+        {/* Mobile content */}
+        <div style={{ paddingTop: 48, paddingBottom: 40, display: "flex", flexDirection: "column", gap: 0 }}>
+
+          {/* a) Logo section */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 20, paddingBottom: 12 }}>
+            <Image
+              src="/logo.png"
+              alt="Muscle Yummi Mami Logo"
+              width={160}
+              height={160}
+              style={{ borderRadius: "50%" }}
+            />
+            <span style={{ fontSize: 10, color: "#666", marginTop: 6, letterSpacing: 1 }}>musclemami.fit</span>
+          </div>
+
+          {/* b) Nav grid window */}
+          <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #333", margin: "0 12px 16px" }}>
+            {/* Title bar */}
+            <div className="mac-title-bar" style={{ height: 22, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+              <div style={{ position: "absolute", left: 5, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+              <div style={{ background: "#fff", padding: "0 6px", fontSize: 10, fontWeight: "bold", letterSpacing: 1 }}>
+                💾 MUSCLE YUMMI MAMI
+              </div>
+              <div style={{ position: "absolute", right: 5, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+            </div>
+            {/* Toolbar */}
+            <div style={{ background: "#e8e8e8", borderBottom: "1px solid #000", padding: "2px 8px", fontSize: 10 }}>
+              14 items — ∞ MB available
+            </div>
+            {/* Grid content */}
+            <div style={{ background: "#fff", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, padding: 16 }}>
+              {[
+                { label: "About/Bio", icon: "👤", href: "/about", color: "#e8b86d" },
+                { label: "Shirts", icon: "👕", href: "/shop/shirts", color: "#5dbb8a" },
+                { label: "Shoes", icon: "👟", href: "/shop/shoes", color: "#5b9bd5" },
+                { label: "Email List", icon: "🔔", href: "/email-list", color: "#a87fd4" },
+                { label: "The Drop", icon: "🗞️", href: "/the-drop", color: "#e8c84a" },
+                { label: "Models", icon: "🪞", href: "/models", color: "#c084fc" },
+                { label: "Love Letter", icon: "💌", href: "/love-letter", color: "#e8608a" },
+                { label: "Size Guide", icon: "📐", href: "/sizes", color: "#ffd93d" },
+                { label: "Terms", icon: "📋", href: "/terms", color: "#b0b0b0" },
+              ].map(({ label, icon, href, color }) => (
+                <Link key={label} href={href} className="desktop-icon" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, cursor: "pointer" }}>
+                  <div style={{ position: "relative", width: 40, height: 54 }}>
+                    <div style={{ position: "absolute", top: 0, left: 4, width: 14, height: 7, background: color, border: "1.5px solid rgba(0,0,0,0.6)", borderBottom: "none", borderRadius: "2px 2px 0 0", filter: "brightness(1.2)" }} />
+                    <div className="folder-body" style={{ position: "absolute", top: 5, left: 0, right: 0, bottom: 0, background: color, border: "1.5px solid rgba(0,0,0,0.6)", borderRadius: "0 3px 3px 3px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, boxShadow: "inset 0 1px 0 rgba(255,255,255,0.3)" }}>
+                      {icon}
+                    </div>
+                  </div>
+                  <span style={{ fontSize: 9, color: "#000", textAlign: "center", padding: "1px 2px", whiteSpace: "nowrap", maxWidth: 70, overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* c) Connect With Us window */}
+          <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #333", margin: "0 12px 16px" }}>
+            <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+              <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+              <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>Connect With Us</div>
+            </div>
+            <div style={{ background: "#dce8f5", padding: 10, display: "flex", flexDirection: "row", gap: 8 }}>
+              {[
+                { label: "Instagram", icon: "📷", href: "https://www.instagram.com/muscle.yummi.mami.fit_models/" },
+                { label: "Discord", icon: "🎮", href: "https://discord.gg/Du7PV4AwqE" },
+              ].map(({ label, icon, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                  style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, background: "#fff", border: "1.5px solid #888", padding: "6px 8px", cursor: "pointer", fontSize: 11, fontWeight: "bold", color: "#000", textDecoration: "none", boxShadow: "1px 1px 0 #000", justifyContent: "center" }}>
+                  <span style={{ fontSize: 14 }}>{icon}</span>
+                  {label}
+                </a>
+              ))}
+            </div>
+            <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+          </div>
+
+          {/* d) Announcement window */}
+          <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #333", margin: "0 12px 16px" }}>
+            <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+              <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+              <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>📢 Announcement</div>
+            </div>
+            <div style={{ background: "#f5f0e8", padding: 14, display: "flex", flexDirection: "column", gap: 10 }}>
+              <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <span style={{ fontSize: 24 }}>📸</span>
+                <div>
+                  <p style={{ fontSize: 12, fontWeight: "bold", color: "#000", lineHeight: 1.5 }}>
+                    Models Wanted — Get Paid to Look Good!
+                  </p>
+                  <p style={{ fontSize: 10, color: "#444", marginTop: 4, lineHeight: 1.5 }}>
+                    Think you got what it takes to rep Muscle Yummi Mami? Send us your photo catalog and let&apos;s get you paid. Drop your email and we&apos;ll take it from there! 💸
+                  </p>
+                </div>
+              </div>
+              <AnnouncementApply />
+            </div>
+            <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+          </div>
+
+          {/* e) Mami Monday window */}
+          <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #333", margin: "0 12px 16px" }}>
+            <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+              <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+              <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>Weekly Feature</div>
+            </div>
+            <div style={{ background: "#0d0d1a", padding: 20, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundImage: "radial-gradient(circle at 50% 50%, rgba(168,85,247,0.15) 0%, transparent 70%)" }}>
+              <div className="mami-script">Mami</div>
+              <div className="mami-day">MONDAY</div>
+              <p style={{ color: "#aaa", fontSize: 10, marginTop: 12, textAlign: "center", lineHeight: 1.6 }}>
+                Every Monday we spotlight a Mami. Models, customers, fans — anyone repping the brand. Could be you. 👀
+              </p>
+              <Link href="/love-letter" style={{ marginTop: 12, fontSize: 10, color: "#c084fc", letterSpacing: 2, textTransform: "uppercase", borderBottom: "1px solid #c084fc", paddingBottom: 2 }}>
+                Submit Yourself →
+              </Link>
+            </div>
+            <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+          </div>
+
+          {/* f) Artist Behind Bars window */}
+          <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #333", margin: "0 12px 16px" }}>
+            <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
+              <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
+              <div style={{ background: "#fff", padding: "0 5px", fontSize: 10, fontWeight: "bold", letterSpacing: 0.5 }}>🎨 New Message</div>
+            </div>
+            <div style={{ background: "#eef2f0", padding: 14, display: "flex", flexDirection: "column", gap: 10 }}>
+              <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <span style={{ fontSize: 24 }}>✊</span>
+                <div>
+                  <p style={{ fontSize: 12, fontWeight: "bold", color: "#000", lineHeight: 1.5 }}>
+                    Art Doesn&apos;t Stop at Bars.
+                  </p>
+                  <p style={{ fontSize: 10, color: "#444", marginTop: 6, lineHeight: 1.7 }}>
+                    Know an artist behind bars with real talent? Their story deserves to be on the streets. We collaborate with incarcerated artists — putting their work on our shirts and shoes so the world can feel it.
+                  </p>
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: 4 }}>
+                <Link href="/love-letter" style={{ background: "#000", color: "#fff", border: "2px solid #000", padding: "6px 18px", fontSize: 11, fontWeight: "bold", letterSpacing: 1, boxShadow: "2px 2px 0 #555", fontFamily: "Geneva, Arial, sans-serif" }}>
+                  ✊ Write Us a Love Letter
+                </Link>
+              </div>
+            </div>
+            <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
+          </div>
+
+          {/* g) Footer */}
+          <div style={{ textAlign: "center", padding: 20, fontSize: 9, color: "#666" }}>
+            <div>Website inspired by Ari Saal Forman 🔒</div>
+            <div style={{ marginTop: 4 }}>© 2026 Muscle Yummi Mami. All rights reserved.</div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   );
 }

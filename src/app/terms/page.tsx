@@ -301,7 +301,7 @@ export default function TermsPage() {
     }}>
       <MenuBar active="Terms" />
 
-      <div style={{ padding: "48px 60px 80px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div className="mobile-page-padding" style={{ padding: "48px 60px 80px", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
         {/* Breadcrumb */}
         <div style={{ color: "#888", fontSize: 10, marginBottom: 16, alignSelf: "flex-start" }}>

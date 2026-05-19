@@ -85,3 +85,29 @@ a {
 .cereal-icon > div:first-child {
   transition: transform 0.15s ease;
 }
+
+/* ── Mobile ── */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: flex !important; }
+
+  /* Inner page padding fix */
+  .mobile-page-padding {
+    padding: 48px 16px 60px !important;
+  }
+
+  /* Menu bar scrollable on mobile */
+  .mobile-menu-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .mobile-menu-scroll::-webkit-scrollbar { display: none; }
+
+  /* Mami script smaller on mobile */
+  .mami-script { font-size: 52px !important; }
+  .mami-day { font-size: 26px !important; }
+}
