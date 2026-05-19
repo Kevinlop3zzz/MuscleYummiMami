@@ -341,7 +341,7 @@ export default function Home() {
         {/* ── MMM Logo ── */}
         <div style={{ position: "fixed", top: 256, right: 88, zIndex: 100, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
           <Image
-            src="/logo.webp"
+            src="/logo.png"
             alt="Muscle Yummi Mami Logo"
             width={450}
             height={450}
