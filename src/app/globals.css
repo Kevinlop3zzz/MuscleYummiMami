@@ -86,6 +86,14 @@ a {
   transition: transform 0.15s ease;
 }
 
+/* Fix Android: inputs/textareas inside a userSelect:none parent won't
+   show the keyboard. Override globally so forms always work. */
+input, textarea, select {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  font-size: 16px !important; /* prevents iOS/Android auto-zoom on focus */
+}
+
 /* ── Mobile ── */
 @media (max-width: 767px) {
   /* Inner page padding fix */

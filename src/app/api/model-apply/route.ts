@@ -1,55 +1,72 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Paste your MODEL APPLICATIONS Google Apps Script URL here after setup
 const GOOGLE_SHEET_URL =
   process.env.MODEL_SHEET_URL || "https://script.google.com/macros/s/AKfycbxWcPCCuiHc5qg5OlJhL__CnoD6YAPomxGn3z_U8vZhTEy86wclc3YyTBtDsCjUAI_XaQ/exec";
+
+// Google Apps Script returns a 302 redirect — Node.js fetch changes POST to GET on 302,
+// dropping the body. This helper manually follows the redirect keeping the POST body intact.
+async function postToScript(url: string, body: object): Promise<Response> {
+  const options: RequestInit = {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(body),
+    redirect: "manual",
+  };
+  const res = await fetch(url, options);
+  if (res.status >= 300 && res.status < 400) {
+    const location = res.headers.get("location");
+    if (location) return fetch(location, options);
+  }
+  return res;
+}
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { source, email } = body;
 
-    // Quick email from Announcement section — only email required
     if (source === "quick") {
       if (!email) {
         return NextResponse.json({ error: "Email is required." }, { status: 400 });
       }
     } else {
-      // Full application — name + email required
       if (!body.name || !email) {
         return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
       }
     }
 
-    if (GOOGLE_SHEET_URL === "PASTE_YOUR_MODEL_APPS_SCRIPT_URL_HERE") {
-      return NextResponse.json({ error: "Model application sheet not configured yet." }, { status: 503 });
-    }
+    const res = await postToScript(
+      GOOGLE_SHEET_URL,
+      source === "quick"
+        ? { source: "quick", email }
+        : {
+            source: "full",
+            name: body.name || "",
+            email,
+            phone: body.phone || "",
+            instagram: body.instagram || "",
+            type: body.type || "",
+            message: body.message || "",
+          }
+    );
 
-    const res = await fetch(GOOGLE_SHEET_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(
-        source === "quick"
-          ? { source: "quick", email }
-          : {
-              source: "full",
-              name: body.name || "",
-              email,
-              phone: body.phone || "",
-              instagram: body.instagram || "",
-              type: body.type || "",
-              message: body.message || "",
-            }
-      ),
-    });
+    const text = await res.text();
+    console.log("Model apply Apps Script response:", text);
 
-    if (!res.ok) {
-      console.error("Google Sheets error:", res.status, await res.text());
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.error("Could not parse Apps Script response:", text);
       return NextResponse.json({ error: "Could not save. Try again." }, { status: 500 });
     }
 
-    const data = await res.json();
-    return NextResponse.json(data);
+    if (data.success === false) {
+      console.error("Apps Script error:", data.error || text);
+      return NextResponse.json({ error: data.error || "Could not save. Try again." }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Model apply error:", err);
     return NextResponse.json({ error: "Something went wrong. Try again." }, { status: 500 });
