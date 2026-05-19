@@ -185,7 +185,7 @@ export default function Home() {
             <DesktopIcon label="Models" href="/models">
               <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🪞</div>
             </DesktopIcon>
-            <DesktopIcon label="Sizes" href="#">
+            <DesktopIcon label="Sizes" href="/sizes">
               <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📐</div>
             </DesktopIcon>
           </div>
@@ -333,7 +333,7 @@ export default function Home() {
           <DesktopIcon label="The Drop" href="/the-drop">
             <div style={{ width: 28, height: 34, background: "#e8c84a", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🗞️</div>
           </DesktopIcon>
-          <DesktopIcon label="Size Guide" href="#">
+          <DesktopIcon label="Size Guide" href="/sizes">
             <div style={{ width: 28, height: 34, background: "#ffd93d", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📏</div>
           </DesktopIcon>
         </div>

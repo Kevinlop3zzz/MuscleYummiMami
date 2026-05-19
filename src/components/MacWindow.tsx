@@ -60,6 +60,7 @@ export function MenuBar({ active }: { active: string }) {
     { label: "The Drop", href: "/the-drop" },
     { label: "Models", href: "/models" },
     { label: "Email List", href: "/email-list" },
+    { label: "Sizes", href: "/sizes" },
     { label: "Terms", href: "/terms" },
   ];
 
