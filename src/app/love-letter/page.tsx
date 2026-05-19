@@ -131,7 +131,7 @@ export default function LoveLetterPage() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <form onSubmit={handleSubmit} method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
               {/* Name */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>

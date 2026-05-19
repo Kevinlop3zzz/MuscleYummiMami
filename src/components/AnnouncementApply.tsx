@@ -50,7 +50,7 @@ export function AnnouncementApply() {
     /* <form> wrapper means the mobile keyboard's "Go" / "Done" button submits
        correctly on both iOS Safari and Android Chrome without a separate
        onKeyDown handler. */
-    <form onSubmit={handleApply} style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
+    <form onSubmit={handleApply} method="post" style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
       <div style={{ display: "flex", gap: 6 }}>
         <input
           type="email"
