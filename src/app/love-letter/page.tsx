@@ -1,17 +1,60 @@
-import { MenuBar } from "@/components/MacWindow";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Love Letter",
-  description: "Write to Muscle Yummi Mami. Customers, fans, and models — tell us what you love, what you want to see, or why you want to work with us.",
-  openGraph: {
-    title: "Love Letter — Muscle Yummi Mami",
-    description: "Write to us. Customers, fans, and models — tell us what MMM means to you.",
-    url: "https://musclemami.fit/love-letter",
-  },
-};
+import { MenuBar } from "@/components/MacWindow";
+import { useState, useRef } from "react";
 
 export default function LoveLetterPage() {
+  const [form, setForm] = useState({ name: "", email: "", role: "", letter: "" });
+  const [photo, setPhoto] = useState<{ base64: string; type: string; name: string } | null>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPhoto({ base64: reader.result as string, type: file.type, name: file.name });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/love-letter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          photo: photo?.base64 || "",
+          photoType: photo?.type || "",
+          photoName: photo?.name || "",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("success");
+        setMessage("Letter received! We read every single one. 💛");
+        setForm({ name: "", email: "", role: "", letter: "" });
+        setPhoto(null);
+        if (fileRef.current) fileRef.current.value = "";
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong. Try again.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Could not connect. Try again.");
+    }
+  };
+
   return (
     <div style={{ width: "100vw", minHeight: "100vh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
       <MenuBar active="Love Letter" />
@@ -60,8 +103,22 @@ export default function LoveLetterPage() {
               <div style={{ borderBottom: "1px dashed #ccc", marginTop: 14 }} />
             </div>
 
+            {/* Success */}
+            {status === "success" && (
+              <div style={{ background: "#e8f5e9", border: "1.5px solid #4caf50", padding: "10px 14px", fontSize: 11, color: "#1b5e20", marginBottom: 16, textAlign: "center" }}>
+                {message}
+              </div>
+            )}
+
+            {/* Error */}
+            {status === "error" && (
+              <div style={{ background: "#ffebee", border: "1.5px solid #e53935", padding: "10px 14px", fontSize: 11, color: "#b71c1c", marginBottom: 16, textAlign: "center" }}>
+                {message}
+              </div>
+            )}
+
             {/* Form */}
-            <form style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
               {/* Name */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -69,6 +126,8 @@ export default function LoveLetterPage() {
                 <input
                   type="text"
                   placeholder="What should we call you?"
+                  value={form.name}
+                  onChange={e => setForm({ ...form, name: e.target.value })}
                   style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
@@ -79,34 +138,46 @@ export default function LoveLetterPage() {
                 <input
                   type="email"
                   placeholder="So we can write back..."
+                  value={form.email}
+                  onChange={e => setForm({ ...form, email: e.target.value })}
                   style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
-              {/* Who are you */}
+              {/* Role */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>I am a...</label>
-                <div style={{ display: "flex", gap: 10 }}>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   {["Customer 🛒", "Model 📸", "Fan 💛", "Other"].map((opt) => (
                     <label key={opt} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 10, cursor: "pointer" }}>
-                      <input type="radio" name="role" value={opt} style={{ cursor: "pointer" }} />
+                      <input
+                        type="radio"
+                        name="role"
+                        value={opt}
+                        checked={form.role === opt}
+                        onChange={() => setForm({ ...form, role: opt })}
+                        style={{ cursor: "pointer" }}
+                      />
                       {opt}
                     </label>
                   ))}
                 </div>
               </div>
 
-              {/* The letter */}
+              {/* Letter */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>Your Love Letter ✍️</label>
+                <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>Your Love Letter ✍️ *</label>
                 <textarea
+                  required
                   placeholder="Dear Muscle Yummi Mami..."
                   rows={8}
+                  value={form.letter}
+                  onChange={e => setForm({ ...form, letter: e.target.value })}
                   style={{ border: "1.5px solid #888", padding: "8px", fontSize: 11, fontFamily: "Georgia, serif", background: "#fff", outline: "none", resize: "vertical", lineHeight: 1.8, color: "#222" }}
                 />
               </div>
 
-              {/* Photo upload (optional) */}
+              {/* Photo upload */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>
                   Attach a Photo &nbsp;<span style={{ fontWeight: "normal", color: "#888" }}>(optional)</span>
@@ -114,25 +185,54 @@ export default function LoveLetterPage() {
                 <p style={{ fontSize: 9, color: "#888", marginBottom: 4 }}>
                   Models — drop your best shot. Customers — show us your fit. Fans — share the love. 📸
                 </p>
-                <div style={{ border: "1.5px dashed #aaa", background: "#fff", padding: "14px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-                  <span style={{ fontSize: 22 }}>📁</span>
-                  <span style={{ fontSize: 10, color: "#555" }}>Drag & drop or click to choose a file</span>
+                <div
+                  style={{ border: "1.5px dashed #aaa", background: "#fff", padding: "14px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, cursor: "pointer" }}
+                  onClick={() => fileRef.current?.click()}
+                >
+                  <span style={{ fontSize: 22 }}>{photo ? "✅" : "📁"}</span>
+                  <span style={{ fontSize: 10, color: "#555" }}>
+                    {photo ? photo.name : "Click to choose a photo"}
+                  </span>
                   <span style={{ fontSize: 9, color: "#aaa" }}>JPG, PNG, GIF — max 10MB</span>
                   <input
+                    ref={fileRef}
                     type="file"
                     accept="image/*"
-                    style={{ fontSize: 10, fontFamily: "Geneva, Arial, sans-serif", cursor: "pointer", marginTop: 4 }}
+                    onChange={handlePhoto}
+                    style={{ display: "none" }}
                   />
                 </div>
+                {photo && (
+                  <button
+                    type="button"
+                    onClick={() => { setPhoto(null); if (fileRef.current) fileRef.current.value = ""; }}
+                    style={{ fontSize: 9, color: "#888", background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}
+                  >
+                    ✕ Remove photo
+                  </button>
+                )}
               </div>
 
               {/* Submit */}
               <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 4 }}>
                 <button
                   type="submit"
-                  style={{ background: "#000", color: "#fff", border: "2px solid #000", padding: "6px 20px", fontSize: 11, fontWeight: "bold", cursor: "pointer", fontFamily: "Geneva, Arial, sans-serif", boxShadow: "2px 2px 0 #555", letterSpacing: 1 }}
+                  disabled={status === "loading"}
+                  style={{
+                    background: "#000",
+                    color: "#fff",
+                    border: "2px solid #000",
+                    padding: "6px 20px",
+                    fontSize: 11,
+                    fontWeight: "bold",
+                    cursor: status === "loading" ? "wait" : "pointer",
+                    fontFamily: "Geneva, Arial, sans-serif",
+                    boxShadow: "2px 2px 0 #555",
+                    letterSpacing: 1,
+                    opacity: status === "loading" ? 0.6 : 1
+                  }}
                 >
-                  Send Letter 💌
+                  {status === "loading" ? "Sending..." : "Send Letter 💌"}
                 </button>
               </div>
 
