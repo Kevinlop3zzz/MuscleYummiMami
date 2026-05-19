@@ -97,20 +97,6 @@ export default function ModelsPage() {
               <div style={{ borderBottom: "1px dashed #ccc", marginTop: 14 }} />
             </div>
 
-            {/* Success */}
-            {status === "success" && (
-              <div style={{ background: "#e8f5e9", border: "1.5px solid #4caf50", padding: "10px 14px", fontSize: 11, color: "#1b5e20", marginBottom: 16, textAlign: "center" }}>
-                {message}
-              </div>
-            )}
-
-            {/* Error */}
-            {status === "error" && (
-              <div style={{ background: "#ffebee", border: "1.5px solid #e53935", padding: "10px 14px", fontSize: 11, color: "#b71c1c", marginBottom: 16, textAlign: "center" }}>
-                {message}
-              </div>
-            )}
-
             {/* Form */}
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
@@ -202,26 +188,42 @@ export default function ModelsPage() {
               </div>
 
               {/* Submit */}
-              <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 4 }}>
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  style={{
-                    background: "#000",
-                    color: "#fff",
-                    border: "2px solid #000",
-                    padding: "6px 20px",
-                    fontSize: 11,
-                    fontWeight: "bold",
-                    cursor: status === "loading" ? "wait" : "pointer",
-                    fontFamily: "Geneva, Arial, sans-serif",
-                    boxShadow: "2px 2px 0 #555",
-                    letterSpacing: 1,
-                    opacity: status === "loading" ? 0.6 : 1
-                  }}
-                >
-                  {status === "loading" ? "Sending..." : "Apply Now 🔥"}
-                </button>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    style={{
+                      background: "#000",
+                      color: "#fff",
+                      border: "2px solid #000",
+                      padding: "6px 20px",
+                      fontSize: 11,
+                      fontWeight: "bold",
+                      cursor: status === "loading" ? "wait" : "pointer",
+                      fontFamily: "Geneva, Arial, sans-serif",
+                      boxShadow: "2px 2px 0 #555",
+                      letterSpacing: 1,
+                      opacity: status === "loading" ? 0.6 : 1
+                    }}
+                  >
+                    {status === "loading" ? "Sending..." : "Apply Now 🔥"}
+                  </button>
+                </div>
+
+                {/* Success — shown below submit so it's visible on mobile */}
+                {status === "success" && (
+                  <div style={{ background: "#e8f5e9", border: "1.5px solid #4caf50", padding: "10px 14px", fontSize: 11, color: "#1b5e20", textAlign: "center" }}>
+                    {message}
+                  </div>
+                )}
+
+                {/* Error */}
+                {status === "error" && (
+                  <div style={{ background: "#ffebee", border: "1.5px solid #e53935", padding: "10px 14px", fontSize: 11, color: "#b71c1c", textAlign: "center" }}>
+                    {message}
+                  </div>
+                )}
               </div>
 
             </form>
