@@ -115,8 +115,8 @@ export default function Home() {
       {/* ── Menu Bar ── */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
         {/* Apple-style logo */}
-        <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: 13, marginRight: 8 }}>
-          ⌘
+        <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, marginRight: 8 }}>
+          💪
         </div>
         {["Shirts", "Shoes", "About", "Email List", "The Drop"].map((item) => (
           <Link key={item} href={item === "Shirts" ? "/shop/shirts" : item === "Shoes" ? "/shop/shoes" : item === "About" ? "/about" : "#"} style={{ padding: "0 10px", height: 20, display: "flex", alignItems: "center", fontSize: 12, fontWeight: "bold", color: "#000" }}>
