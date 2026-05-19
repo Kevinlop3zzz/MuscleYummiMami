@@ -385,7 +385,19 @@ export default function Home() {
         {/* Mobile content */}
         <div style={{ paddingTop: 48, paddingBottom: 40, display: "flex", flexDirection: "column", gap: 0 }}>
 
-          {/* 1) Announcement window */}
+          {/* 1) Logo section */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 20, paddingBottom: 12 }}>
+            <Image
+              src="/logo.png"
+              alt="Muscle Yummi Mami Logo"
+              width={160}
+              height={160}
+              style={{ borderRadius: "50%" }}
+            />
+            <span style={{ fontSize: 10, color: "#666", marginTop: 6, letterSpacing: 1 }}>musclemami.fit</span>
+          </div>
+
+          {/* 2) Announcement window */}
           <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #333", margin: "0 12px 16px" }}>
             <div className="mac-title-bar" style={{ height: 20, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1.5px solid #000" }}>
               <div style={{ position: "absolute", left: 4, width: 12, height: 12, border: "1.5px solid #000", background: "#fff" }} />
@@ -452,18 +464,6 @@ export default function Home() {
               </div>
             </div>
             <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
-          </div>
-
-          {/* 4) Logo section */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 20, paddingBottom: 12 }}>
-            <Image
-              src="/logo.png"
-              alt="Muscle Yummi Mami Logo"
-              width={160}
-              height={160}
-              style={{ borderRadius: "50%" }}
-            />
-            <span style={{ fontSize: 10, color: "#666", marginTop: 6, letterSpacing: 1 }}>musclemami.fit</span>
           </div>
 
           {/* 5) Nav grid window */}
