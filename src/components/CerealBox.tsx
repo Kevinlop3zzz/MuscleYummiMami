@@ -90,7 +90,7 @@ export function CerealBox({ name, flavor, color, accent, textColor = "#fff", emo
       </div>
 
       {/* Label under box */}
-      <span style={{ fontSize: 10, color: "#fff", textAlign: "center", maxWidth: 70, lineHeight: 1.3 }}>
+      <span style={{ fontSize: 10, color: "#000", textAlign: "center", maxWidth: 70, lineHeight: 1.3 }}>
         {flavor}
       </span>
     </Link>
