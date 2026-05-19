@@ -205,7 +205,7 @@ export default function ModelsPage() {
                   value={form.message}
                   onChange={e => setForm({ ...form, message: e.target.value })}
                   rows={5}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", resize: "vertical" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", resize: "none" }}
                 />
               </div>
 

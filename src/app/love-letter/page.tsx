@@ -189,7 +189,7 @@ export default function LoveLetterPage() {
                   rows={8}
                   value={form.letter}
                   onChange={e => setForm({ ...form, letter: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "8px", fontFamily: "Georgia, serif", background: "#fff", outline: "none", resize: "vertical", lineHeight: 1.8, color: "#222" }}
+                  style={{ border: "1.5px solid #888", padding: "8px", fontFamily: "Georgia, serif", background: "#fff", outline: "none", resize: "none", lineHeight: 1.8, color: "#222" }}
                 />
               </div>
 
