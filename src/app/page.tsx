@@ -110,10 +110,12 @@ function TrashCan() {
 
 export default function Home() {
   return (
-    <div className="mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", userSelect: "none" }}>
+    <>
+    {/* ══ DESKTOP LAYOUT ══ */}
+    <div className="desktop-only mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", userSelect: "none" }}>
 
       {/* ── Menu Bar ── */}
-      <div className="desktop-only" style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
         {/* Apple-style logo */}
         <div style={{ width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, marginRight: 8 }}>
           👑
@@ -132,7 +134,7 @@ export default function Home() {
       </div>
 
       {/* ── Desktop ── */}
-      <div className="desktop-only" style={{ paddingTop: 20, width: "100%", minHeight: "100vh", position: "relative" }}>
+      <div style={{ paddingTop: 20, width: "100%", minHeight: "100vh", position: "relative" }}>
 
         {/* ── Main Finder Window ── */}
         <div style={{ position: "absolute", top: 30, left: 120, width: 540, border: "2px solid #000", zIndex: 10, boxShadow: "3px 3px 0 #333" }}>
@@ -369,8 +371,9 @@ export default function Home() {
 
       </div>
 
-      {/* ── Mobile Layout ── */}
-      <div className="mobile-only" style={{ flexDirection: "column", width: "100%", minHeight: "100vh" }}>
+    </div>
+    {/* ══ MOBILE LAYOUT ══ */}
+    <div className="mobile-only mac-desktop" style={{ flexDirection: "column", width: "100%", minHeight: "100vh" }}>
 
         {/* Mobile fixed header */}
         <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 48, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 12px" }}>
@@ -534,7 +537,7 @@ export default function Home() {
 
         </div>
       </div>
-
     </div>
+    </>
   );
 }
