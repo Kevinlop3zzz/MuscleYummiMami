@@ -394,7 +394,7 @@ export default function Home() {
               height={160}
               style={{ borderRadius: "50%" }}
             />
-            <span style={{ fontSize: 10, color: "#666", marginTop: 6, letterSpacing: 1 }}>musclemami.fit</span>
+            <span style={{ fontSize: 10, color: "#666", marginTop: 6, letterSpacing: 1 }}>muscle yummi mami</span>
           </div>
 
           {/* 2) Announcement window */}
