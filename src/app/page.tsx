@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { AnnouncementApply } from "@/components/AnnouncementApply";
 
 interface FolderIconProps {
   label: string;
@@ -268,15 +269,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            {/* Apply CTA */}
-            <div style={{ display: "flex", justifyContent: "center", marginTop: 4 }}>
-              <Link
-                href="/models"
-                style={{ background: "#000", color: "#fff", border: "1.5px solid #000", padding: "6px 18px", fontSize: 11, fontWeight: "bold", cursor: "pointer", fontFamily: "Geneva, Arial, sans-serif", boxShadow: "2px 2px 0 #555", letterSpacing: 1, textDecoration: "none" }}
-              >
-                Apply Now 🔥
-              </Link>
-            </div>
+            <AnnouncementApply />
           </div>
           {/* Bottom bar */}
           <div style={{ background: "#c8c8c8", borderTop: "1px solid #000", height: 12 }} />
