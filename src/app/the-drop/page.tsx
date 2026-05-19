@@ -46,7 +46,7 @@ export default function TheDropPage() {
     <div style={{
       width: "100vw",
       minHeight: "100vh",
-      background: "#000",
+      background: "#a4bccc",
       fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif",
       userSelect: "none"
     }}>
@@ -83,12 +83,12 @@ export default function TheDropPage() {
           </div>
 
           {/* Content */}
-          <div style={{ background: "#0d0d0d", padding: "32px 36px" }}>
+          <div style={{ background: "#ffffff", padding: "32px 36px" }}>
 
             {/* Header */}
             <div style={{ marginBottom: 32 }}>
               <div style={{ fontSize: 10, color: "#555", letterSpacing: 3, marginBottom: 8 }}>LATEST</div>
-              <div style={{ fontSize: 20, fontWeight: "bold", color: "#fff", letterSpacing: 1 }}>
+              <div style={{ fontSize: 20, fontWeight: "bold", color: "#000", letterSpacing: 1 }}>
                 The Drop.
               </div>
               <div style={{ fontSize: 10, color: "#666", marginTop: 6, lineHeight: 1.8 }}>
@@ -102,8 +102,8 @@ export default function TheDropPage() {
               {posts.map((post, i) => (
                 <div key={i}>
                   <div style={{
-                    background: "#111",
-                    border: "1px solid #222",
+                    background: "#f5f5f5",
+                    border: "1px solid #ccc",
                     padding: "20px 24px",
                     cursor: "pointer",
                     transition: "border-color 0.15s"
@@ -127,10 +127,10 @@ export default function TheDropPage() {
                     <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                       <span style={{ fontSize: 22, flexShrink: 0 }}>{post.emoji}</span>
                       <div>
-                        <div style={{ fontSize: 12, fontWeight: "bold", color: "#fff", marginBottom: 8, lineHeight: 1.4 }}>
+                        <div style={{ fontSize: 12, fontWeight: "bold", color: "#000", marginBottom: 8, lineHeight: 1.4 }}>
                           {post.title}
                         </div>
-                        <div style={{ fontSize: 10, color: "#888", lineHeight: 1.9 }}>
+                        <div style={{ fontSize: 10, color: "#444", lineHeight: 1.9 }}>
                           {post.preview}
                         </div>
                       </div>
@@ -152,15 +152,15 @@ export default function TheDropPage() {
             <div style={{
               marginTop: 32,
               padding: "16px 20px",
-              border: "1px solid #222",
-              background: "#111",
+              border: "1px solid #ccc",
+              background: "#f0f4f8",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               gap: 16
             }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: "bold", color: "#fff", marginBottom: 4 }}>
+                <div style={{ fontSize: 10, fontWeight: "bold", color: "#000", marginBottom: 4 }}>
                   Never miss a drop. 📬
                 </div>
                 <div style={{ fontSize: 9, color: "#666" }}>

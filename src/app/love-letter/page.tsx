@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function LoveLetterPage() {
   return (
-    <div style={{ width: "100vw", minHeight: "100vh", background: "#000", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
+    <div style={{ width: "100vw", minHeight: "100vh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
       <MenuBar active="Love Letter" />
 
       <div style={{ paddingTop: 48, padding: "48px 60px 60px", display: "flex", flexDirection: "column", alignItems: "center" }}>

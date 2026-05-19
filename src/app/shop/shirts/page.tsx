@@ -1,5 +1,6 @@
 import { MenuBar, MacWindow } from "@/components/MacWindow";
 import { CerealBox } from "@/components/CerealBox";
+import { shirtInventory } from "@/data/inventory";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -69,7 +70,7 @@ const shirtCereals = [
 
 export default function ShirtsPage() {
   return (
-    <div style={{ width: "100vw", minHeight: "100vh", background: "#000", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
+    <div style={{ width: "100vw", minHeight: "100vh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
       <MenuBar active="Shirts" />
 
       <div style={{ paddingTop: 28, padding: "28px 60px 60px" }}>
@@ -85,6 +86,7 @@ export default function ShirtsPage() {
                   key={box.flavor}
                   {...box}
                   href={`/shop/shirts/${box.flavor.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")}`}
+                  count={shirtInventory[box.flavor] ?? 0}
                 />
               ))}
             </div>

@@ -36,7 +36,7 @@ export function MacWindow({ title, itemCount, children }: MacWindowProps) {
       </div>
 
       {/* Content */}
-      <div style={{ background: "#1c1c1c", padding: "28px 24px", minHeight: 320 }}>
+      <div style={{ background: "#ffffff", padding: "28px 24px", minHeight: 320 }}>
         {children}
       </div>
 

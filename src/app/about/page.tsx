@@ -16,7 +16,7 @@ export default function AboutPage() {
     <div style={{
       width: "100vw",
       minHeight: "100vh",
-      background: "#000",
+      background: "#a4bccc",
       fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif",
       userSelect: "none"
     }}>
@@ -52,7 +52,7 @@ export default function AboutPage() {
           </div>
 
           {/* Content */}
-          <div style={{ background: "#0d0d0d", padding: "40px 44px" }}>
+          <div style={{ background: "#ffffff", padding: "40px 44px" }}>
 
             {/* Header */}
             <div style={{ marginBottom: 32 }}>
@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div style={{
                 fontSize: 22,
                 fontWeight: "bold",
-                color: "#fff",
+                color: "#000",
                 lineHeight: 1.3,
                 letterSpacing: 1
               }}>
@@ -77,20 +77,20 @@ export default function AboutPage() {
             {/* Bio paragraphs */}
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
 
-              <p style={{ fontSize: 11, color: "#ccc", lineHeight: 2 }}>
+              <p style={{ fontSize: 11, color: "#333", lineHeight: 2 }}>
                 Muscle Yummi Mami was born from the idea that the best things in life hit different when they're made with intention — the fits that turn heads, the art that stops you mid-scroll, the drop you didn't see coming. That's the energy we run on.
               </p>
 
-              <p style={{ fontSize: 11, color: "#ccc", lineHeight: 2 }}>
-                Every piece we put out starts with a feeling. Not a trend, not a formula — a feeling. The kind that makes you point at something and say <em style={{ color: "#fff", fontStyle: "italic" }}>that's me.</em> Bold enough to stand alone. Specific enough to mean something. Wearable enough that you actually reach for it.
+              <p style={{ fontSize: 11, color: "#333", lineHeight: 2 }}>
+                Every piece we put out starts with a feeling. Not a trend, not a formula — a feeling. The kind that makes you point at something and say <em style={{ color: "#000", fontStyle: "italic" }}>that's me.</em> Bold enough to stand alone. Specific enough to mean something. Wearable enough that you actually reach for it.
               </p>
 
-              <p style={{ fontSize: 11, color: "#ccc", lineHeight: 2 }}>
+              <p style={{ fontSize: 11, color: "#333", lineHeight: 2 }}>
                 We're not chasing the mainstream. We're building our own lane — one drop at a time, one design at a time, one person at a time. Our community includes the grinders, the creatives, the ones overlooked, the ones unbothered, the ones just now stepping into their moment.
               </p>
 
-              <p style={{ fontSize: 11, color: "#ccc", lineHeight: 2 }}>
-                If you found us, you already know. This isn't for everybody — but if it's for you, it's <em style={{ color: "#fff" }}>really</em> for you.
+              <p style={{ fontSize: 11, color: "#333", lineHeight: 2 }}>
+                If you found us, you already know. This isn't for everybody — but if it's for you, it's <em style={{ color: "#000" }}>really</em> for you.
               </p>
 
             </div>
@@ -99,8 +99,8 @@ export default function AboutPage() {
             <div style={{
               marginTop: 40,
               padding: "20px 24px",
-              border: "1px solid #222",
-              background: "#111"
+              border: "1px solid #000",
+              background: "#1a1a2e"
             }}>
               <div style={{
                 fontSize: 13,

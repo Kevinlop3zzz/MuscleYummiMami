@@ -20,7 +20,7 @@ function FolderIcon({ label, color, href, icon, style }: FolderIconProps) {
           {icon}
         </div>
       </div>
-      <span style={{ fontSize: 11, color: "#fff", textAlign: "center", padding: "1px 4px", whiteSpace: "nowrap", maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis", textShadow: "0 1px 2px rgba(0,0,0,0.8)" }}>
+      <span style={{ fontSize: 11, color: "#000", textAlign: "center", padding: "1px 4px", whiteSpace: "nowrap", maxWidth: 90, overflow: "hidden", textOverflow: "ellipsis" }}>
         {label}
       </span>
     </Link>
@@ -33,7 +33,7 @@ function DesktopIcon({ label, href, children, style }: { label: string; href: st
       <div style={{ width: 32, height: 32, display: "flex", alignItems: "center", justifyContent: "center" }}>
         {children}
       </div>
-      <span style={{ fontSize: 10, color: "#fff", textAlign: "center", padding: "1px 3px", whiteSpace: "nowrap" }}>
+      <span style={{ fontSize: 10, color: "#000", textAlign: "center", padding: "1px 3px", whiteSpace: "nowrap" }}>
         {label}
       </span>
     </Link>
@@ -47,7 +47,41 @@ function FloppyDisk({ label }: { label: string }) {
         <div style={{ position: "absolute", top: 4, left: 4, right: 4, height: 8, background: "#888", borderRadius: 1 }} />
         <div style={{ position: "absolute", bottom: 4, right: 6, width: 10, height: 10, background: "#aaa", border: "1px solid #666", borderRadius: 1 }} />
       </div>
-      <span style={{ fontSize: 10, color: "#fff", textAlign: "center" }}>{label}</span>
+      <span style={{ fontSize: 10, color: "#000", textAlign: "center" }}>{label}</span>
+    </div>
+  );
+}
+
+function LockedFloppyDisk() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+      <div style={{ width: 32, height: 36, background: "#b0b8c8", border: "1.5px solid #000", position: "relative", borderRadius: 2 }}>
+        {/* Floppy top stripe */}
+        <div style={{ position: "absolute", top: 4, left: 4, right: 4, height: 8, background: "#7a8898", borderRadius: 1 }} />
+        {/* Floppy window */}
+        <div style={{ position: "absolute", bottom: 4, right: 6, width: 10, height: 10, background: "#9aa8b8", border: "1px solid #556", borderRadius: 1 }} />
+        {/* Lock icon — bottom left corner */}
+        <div style={{
+          position: "absolute",
+          bottom: -5,
+          left: -5,
+          width: 14,
+          height: 14,
+          background: "#1a1a1a",
+          border: "1.5px solid #000",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 7,
+          zIndex: 2,
+        }}>
+          🔒
+        </div>
+      </div>
+      <span style={{ fontSize: 8, color: "#444", textAlign: "center", maxWidth: 60, lineHeight: 1.3, fontStyle: "italic" }}>
+        Inspired by Ari Saal Forman
+      </span>
     </div>
   );
 }
@@ -68,7 +102,7 @@ function TrashCan() {
         {/* Handle */}
         <div style={{ position: "absolute", top: 0, left: 8, right: 8, height: 7, border: "1.5px solid #000", borderBottom: "none", borderRadius: "3px 3px 0 0", background: "transparent" }} />
       </div>
-      <span style={{ fontSize: 10, color: "#fff" }}>Trash</span>
+      <span style={{ fontSize: 10, color: "#000" }}>Trash</span>
     </div>
   );
 }
@@ -118,7 +152,7 @@ export default function Home() {
           </div>
 
           {/* Window content */}
-          <div style={{ background: "#1e1e1e", padding: "24px 20px", display: "flex", flexWrap: "wrap", gap: 32, minHeight: 260 }}>
+          <div style={{ background: "#ffffff", padding: "24px 20px", display: "flex", flexWrap: "wrap", gap: 32, minHeight: 260 }}>
             <FolderIcon label="About / Bio"  color="#e8b86d" href="/about"         icon="👤" />
             <FolderIcon label="Shirts"        color="#5dbb8a" href="/shop/shirts"   icon="👕" />
             <FolderIcon label="Shoes"         color="#5b9bd5" href="/shop/shoes"    icon="👟" />
@@ -160,6 +194,7 @@ export default function Home() {
         <div style={{ position: "absolute", top: 40, right: 20, display: "flex", flexDirection: "column", gap: 20, alignItems: "center" }}>
           <FloppyDisk label="musclemami.fit" />
           <FloppyDisk label="Drop 001" />
+          <LockedFloppyDisk />
         </div>
 
         {/* ── Social Media Window ── */}
@@ -319,6 +354,8 @@ export default function Home() {
             alt="Muscle Yummi Mami Logo"
             width={450}
             height={450}
+            loading="eager"
+            priority
             style={{ borderRadius: "50%" }}
           />
           <span style={{ fontSize: 9, color: "#888", letterSpacing: 1, textTransform: "uppercase" }}>MYM</span>

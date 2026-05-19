@@ -295,7 +295,7 @@ export default function TermsPage() {
     <div style={{
       width: "100vw",
       minHeight: "100vh",
-      background: "#000",
+      background: "#a4bccc",
       fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif",
       userSelect: "none"
     }}>
