@@ -1,12 +1,19 @@
 "use client";
 
 import { MenuBar } from "@/components/MacWindow";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function EmailListPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", interest: "Customer" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      messageRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -163,7 +170,7 @@ export default function EmailListPage() {
               </div>
 
               {/* Submit */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
+              <div ref={messageRef} style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
                   <button
                     type="submit"

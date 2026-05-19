@@ -37,16 +37,24 @@ export async function POST(req: NextRequest) {
     });
 
     const text = await res.text();
-    console.log("Email signup Apps Script response:", text);
+    console.log("[email-signup] Apps Script raw response:", text.slice(0, 300));
+
+    // If the response starts with '<', Google redirected to a login page instead
+    // of running the script. This means the Apps Script is NOT deployed with
+    // "Execute as: Me" + "Who has access: Anyone". Fix in Apps Script → Deploy.
+    if (text.trim().startsWith("<")) {
+      console.error("[email-signup] Got HTML back — Apps Script permissions wrong. Open the script, go to Deploy → Manage Deployments, set access to 'Anyone'.");
+      return NextResponse.json({ error: "Google Sheets connection failed — check Apps Script deployment." }, { status: 500 });
+    }
 
     let data;
     try { data = JSON.parse(text); } catch {
-      console.error("Could not parse Apps Script response:", text);
+      console.error("[email-signup] Could not parse response:", text.slice(0, 200));
       return NextResponse.json({ error: "Could not save. Try again." }, { status: 500 });
     }
 
     if (data.success === false) {
-      console.error("Apps Script error:", data.error);
+      console.error("[email-signup] Apps Script returned error:", data.error);
       return NextResponse.json({ error: data.error || "Could not save. Try again." }, { status: 500 });
     }
 

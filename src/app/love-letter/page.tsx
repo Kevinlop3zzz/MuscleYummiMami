@@ -1,7 +1,7 @@
 "use client";
 
 import { MenuBar } from "@/components/MacWindow";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function LoveLetterPage() {
   const [form, setForm] = useState({ name: "", email: "", role: "", letter: "" });
@@ -10,6 +10,13 @@ export default function LoveLetterPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      messageRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
 
   const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -232,7 +239,7 @@ export default function LoveLetterPage() {
               </div>
 
               {/* Submit */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
+              <div ref={messageRef} style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
                   <button
                     type="submit"

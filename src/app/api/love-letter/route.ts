@@ -44,18 +44,23 @@ export async function POST(req: NextRequest) {
     });
 
     const text = await res.text();
-    console.log("Love letter Apps Script response:", text);
+    console.log("[love-letter] Apps Script raw response:", text.slice(0, 300));
+
+    if (text.trim().startsWith("<")) {
+      console.error("[love-letter] Got HTML back — Apps Script permissions wrong. Open the script, go to Deploy → Manage Deployments, set access to 'Anyone'.");
+      return NextResponse.json({ error: "Google Sheets connection failed — check Apps Script deployment." }, { status: 500 });
+    }
 
     let data;
     try {
       data = JSON.parse(text);
     } catch {
-      console.error("Could not parse Apps Script response:", text);
+      console.error("[love-letter] Could not parse response:", text.slice(0, 200));
       return NextResponse.json({ error: "Could not send. Try again." }, { status: 500 });
     }
 
     if (data.success === false) {
-      console.error("Apps Script error:", data.error || text);
+      console.error("[love-letter] Apps Script returned error:", data.error || text);
       return NextResponse.json({ error: data.error || "Could not send. Try again." }, { status: 500 });
     }
 
