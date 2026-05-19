@@ -115,7 +115,7 @@ export default function ModelsPage() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
               {/* Name */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -204,7 +204,8 @@ export default function ModelsPage() {
                   placeholder="Your vibe, your look, why you rep MMM..."
                   value={form.message}
                   onChange={e => setForm({ ...form, message: e.target.value })}
-                  rows={5}
+                  onFocus={e => setTimeout(() => e.target.scrollIntoView({ behavior: "smooth", block: "center" }), 350)}
+                  rows={4}
                   style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", resize: "none" }}
                 />
               </div>

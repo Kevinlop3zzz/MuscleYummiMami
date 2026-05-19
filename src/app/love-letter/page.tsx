@@ -131,7 +131,7 @@ export default function LoveLetterPage() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
               {/* Name */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -186,9 +186,10 @@ export default function LoveLetterPage() {
                 <textarea
                   required
                   placeholder="Dear Muscle Yummi Mami..."
-                  rows={8}
+                  rows={6}
                   value={form.letter}
                   onChange={e => setForm({ ...form, letter: e.target.value })}
+                  onFocus={e => setTimeout(() => e.target.scrollIntoView({ behavior: "smooth", block: "center" }), 350)}
                   style={{ border: "1.5px solid #888", padding: "8px", fontFamily: "Georgia, serif", background: "#fff", outline: "none", resize: "none", lineHeight: 1.8, color: "#222" }}
                 />
               </div>

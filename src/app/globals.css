@@ -98,12 +98,18 @@ a {
 }
 
 /* Fix Android: inputs/textareas/labels inside a userSelect:none parent won't
-   show the keyboard or register taps correctly. Override globally so all
-   interactive form elements always work — including radio button labels. */
+   show the keyboard or register taps correctly — especially radio button labels.
+   Apply user-select:text to all interactive form elements. */
 input, textarea, select, label {
   user-select: text !important;
   -webkit-user-select: text !important;
-  font-size: 16px !important; /* prevents iOS/Android auto-zoom on focus */
+}
+
+/* Prevent iOS/Android auto-zoom on input focus.
+   Only applied to actual inputs — NOT labels — so label font sizes
+   stay at whatever the component sets and don't blow up the layout. */
+input, textarea, select {
+  font-size: 16px !important;
 }
 
 /* ── Mobile ── */

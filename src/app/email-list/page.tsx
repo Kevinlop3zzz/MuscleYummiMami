@@ -104,7 +104,7 @@ export default function EmailListPage() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} method="post" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
               {/* Name */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
