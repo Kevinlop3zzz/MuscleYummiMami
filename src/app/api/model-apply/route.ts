@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 // Paste your MODEL APPLICATIONS Google Apps Script URL here after setup
 const GOOGLE_SHEET_URL =
-  process.env.MODEL_SHEET_URL || "https://script.google.com/macros/s/AKfycbwyzPI1K3QzZ8Rd3uO1MQJIhyG2tHPUieB_2-i35HavmBui9huqlBlCsNVQ26Fq6AR4fQ/exec";
+  process.env.MODEL_SHEET_URL || "https://script.google.com/macros/s/AKfycbxWcPCCuiHc5qg5OlJhL__CnoD6YAPomxGn3z_U8vZhTEy86wclc3YyTBtDsCjUAI_XaQ/exec";
 
 export async function POST(req: NextRequest) {
   try {
