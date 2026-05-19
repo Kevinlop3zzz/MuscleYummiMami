@@ -26,7 +26,6 @@ export function CerealBox({ name, flavor, color, accent, textColor = "#fff", emo
           right: -6,
           minWidth: 16,
           height: 16,
-          borderRadius: "50%",
           background: "#e53935",
           border: "1.5px solid #000",
           display: "flex",
