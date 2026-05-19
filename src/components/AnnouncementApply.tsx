@@ -6,6 +6,11 @@ import Link from "next/link";
 export function AnnouncementApply() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  // Prevent native form submission before React hydrates.
+  // The button stays disabled until this flips to true (happens immediately
+  // after the first render on the client, so users never notice the delay).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +68,7 @@ export function AnnouncementApply() {
         />
         <button
           type="submit"
-          disabled={status === "loading"}
+          disabled={!mounted || status === "loading"}
           style={{
             background: "#000",
             color: "#fff",
@@ -73,9 +78,8 @@ export function AnnouncementApply() {
             cursor: status === "loading" ? "wait" : "pointer",
             fontFamily: "Geneva, Arial, sans-serif",
             boxShadow: "1px 1px 0 #555",
-            opacity: status === "loading" ? 0.6 : 1,
-            // Block double-taps during submission on Android
-            pointerEvents: status === "loading" ? "none" : "auto",
+            opacity: (!mounted || status === "loading") ? 0.6 : 1,
+            pointerEvents: (!mounted || status === "loading") ? "none" : "auto",
             touchAction: "manipulation",
           }}
         >
