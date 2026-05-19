@@ -6,10 +6,19 @@ const GOOGLE_SHEET_URL =
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, phone, instagram, type, message } = await req.json();
+    const body = await req.json();
+    const { source, email } = body;
 
-    if (!name || !email) {
-      return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
+    // Quick email from Announcement section — only email required
+    if (source === "quick") {
+      if (!email) {
+        return NextResponse.json({ error: "Email is required." }, { status: 400 });
+      }
+    } else {
+      // Full application — name + email required
+      if (!body.name || !email) {
+        return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
+      }
     }
 
     if (GOOGLE_SHEET_URL === "PASTE_YOUR_MODEL_APPS_SCRIPT_URL_HERE") {
@@ -19,19 +28,24 @@ export async function POST(req: NextRequest) {
     const res = await fetch(GOOGLE_SHEET_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        phone: phone || "",
-        instagram: instagram || "",
-        type: type || "",
-        message: message || "",
-      }),
+      body: JSON.stringify(
+        source === "quick"
+          ? { source: "quick", email }
+          : {
+              source: "full",
+              name: body.name || "",
+              email,
+              phone: body.phone || "",
+              instagram: body.instagram || "",
+              type: body.type || "",
+              message: body.message || "",
+            }
+      ),
     });
 
     if (!res.ok) {
       console.error("Google Sheets error:", res.status, await res.text());
-      return NextResponse.json({ error: "Could not save application. Try again." }, { status: 500 });
+      return NextResponse.json({ error: "Could not save. Try again." }, { status: 500 });
     }
 
     const data = await res.json();

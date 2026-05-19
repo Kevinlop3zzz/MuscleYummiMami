@@ -15,7 +15,7 @@ export function AnnouncementApply() {
       const res = await fetch("/api/model-apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: "", email, phone: "", instagram: "", type: "Model", message: "" }),
+        body: JSON.stringify({ source: "quick", email }),
       });
 
       if (res.ok) {
