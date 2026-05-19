@@ -181,7 +181,7 @@ export default function Home() {
             <DesktopIcon label="Lookbook" href="#">
               <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📸</div>
             </DesktopIcon>
-            <DesktopIcon label="Models" href="/love-letter">
+            <DesktopIcon label="Models" href="/models">
               <div style={{ width: 28, height: 28, background: "#fff", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🪞</div>
             </DesktopIcon>
             <DesktopIcon label="Sizes" href="#">
@@ -268,16 +268,14 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            {/* Email input row */}
-            <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-              <input
-                type="email"
-                placeholder="Enter your email..."
-                style={{ flex: 1, border: "1.5px solid #888", padding: "4px 6px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
-              />
-              <button style={{ background: "#000", color: "#fff", border: "1.5px solid #000", padding: "4px 10px", fontSize: 11, fontWeight: "bold", cursor: "pointer", fontFamily: "Geneva, Arial, sans-serif", boxShadow: "1px 1px 0 #555" }}>
-                Apply
-              </button>
+            {/* Apply CTA */}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 4 }}>
+              <Link
+                href="/models"
+                style={{ background: "#000", color: "#fff", border: "1.5px solid #000", padding: "6px 18px", fontSize: 11, fontWeight: "bold", cursor: "pointer", fontFamily: "Geneva, Arial, sans-serif", boxShadow: "2px 2px 0 #555", letterSpacing: 1, textDecoration: "none" }}
+              >
+                Apply Now 🔥
+              </Link>
             </div>
           </div>
           {/* Bottom bar */}
@@ -336,7 +334,7 @@ export default function Home() {
           <DesktopIcon label="MM Lookbook" href="#">
             <div style={{ width: 28, height: 34, background: "#ff6b6b", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>📸</div>
           </DesktopIcon>
-          <DesktopIcon label="Models" href="/love-letter">
+          <DesktopIcon label="Models" href="/models">
             <div style={{ width: 28, height: 34, background: "#c084fc", border: "1px solid #000", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🪞</div>
           </DesktopIcon>
           <DesktopIcon label="The Drop" href="/the-drop">
