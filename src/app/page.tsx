@@ -112,7 +112,7 @@ export default function Home() {
   return (
     <>
     {/* ══ DESKTOP LAYOUT ══ */}
-    <div className="desktop-only mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", userSelect: "none" }}>
+    <div className="hidden md:block mac-desktop" style={{ width: "100vw", minHeight: "100vh", position: "relative", userSelect: "none" }}>
 
       {/* ── Menu Bar ── */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 20, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 8px", gap: 0 }}>
@@ -373,7 +373,7 @@ export default function Home() {
 
     </div>
     {/* ══ MOBILE LAYOUT ══ */}
-    <div className="mobile-only mac-desktop" style={{ flexDirection: "column", width: "100%", minHeight: "100vh" }}>
+    <div className="flex md:hidden mac-desktop" style={{ flexDirection: "column", width: "100%", minHeight: "100vh" }}>
 
         {/* Mobile fixed header */}
         <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: 48, background: "#fff", borderBottom: "1px solid #555", display: "flex", alignItems: "center", zIndex: 1000, padding: "0 12px" }}>
