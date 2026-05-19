@@ -79,51 +79,57 @@ export default function SizesPage() {
                 {/* Premium Tier */}
                 <div style={{ flex: 1, minWidth: 180, border: "2px solid #000", boxShadow: "3px 3px 0 #333" }}>
                   {/* Title bar */}
-                  <div style={{ background: "#000", padding: "5px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ background: "#e8b86d", padding: "5px 10px", display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ fontSize: 12 }}>💪</span>
-                    <span style={{ fontSize: 10, fontWeight: "bold", color: "#fff", letterSpacing: 1 }}>PREMIUM</span>
+                    <span style={{ fontSize: 10, fontWeight: "bold", color: "#000", letterSpacing: 1 }}>PREMIUM</span>
                   </div>
                   {/* Body */}
-                  <div style={{ background: "#0d0d1a", padding: "14px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
-                    <p style={{ fontSize: 13, fontWeight: "bold", color: "#fff", lineHeight: 1.4 }}>
+                  <div style={{ background: "#fffef5", padding: "14px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
+                    <p style={{ fontSize: 13, fontWeight: "bold", color: "#000", lineHeight: 1.4 }}>
                       Heavyweight Cotton
                     </p>
-                    <p style={{ fontSize: 9, color: "#aaa", lineHeight: 1.7 }}>
+                    <p style={{ fontSize: 9, color: "#444", lineHeight: 1.7 }}>
                       6oz+ thick cotton — the same quality as Pro Club. Built to last through washes, workouts, and everyday wear. Full premium graphics, deep colors, and a structured feel that holds its shape.
                     </p>
-                    <div style={{ borderTop: "1px solid #333", paddingTop: 8, display: "flex", flexDirection: "column", gap: 4 }}>
+                    <div style={{ borderTop: "1px solid #e0d0a0", paddingTop: 8, display: "flex", flexDirection: "column", gap: 4 }}>
                       {["✅ Heavy 6oz+ cotton", "✅ Full graphic prints", "✅ Built to last", "✅ Pro Club quality feel"].map(item => (
-                        <span key={item} style={{ fontSize: 9, color: "#c084fc" }}>{item}</span>
+                        <span key={item} style={{ fontSize: 9, color: "#7a5500" }}>{item}</span>
                       ))}
                     </div>
-                    <div style={{ marginTop: 4, background: "#1a1a2e", border: "1px solid #333", padding: "6px 10px", textAlign: "center" }}>
-                      <span style={{ fontSize: 10, fontWeight: "bold", color: "#fff", letterSpacing: 1 }}>TOP TIER 🔥</span>
+                    <div style={{ marginTop: 4, background: "#f5e6c0", border: "1px solid #e8b86d", padding: "6px 10px", textAlign: "center" }}>
+                      <span style={{ fontSize: 10, fontWeight: "bold", color: "#7a5500", letterSpacing: 1 }}>TOP TIER 🔥</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Budget Tier */}
+                {/* The Plug Tier */}
                 <div style={{ flex: 1, minWidth: 180, border: "2px solid #000", boxShadow: "3px 3px 0 #333" }}>
                   {/* Title bar */}
-                  <div style={{ background: "#5dbb8a", padding: "5px 10px", display: "flex", alignItems: "center", gap: 6 }}>
-                    <span style={{ fontSize: 12 }}>💚</span>
-                    <span style={{ fontSize: 10, fontWeight: "bold", color: "#000", letterSpacing: 1 }}>BUDGET FRIENDLY</span>
+                  <div style={{ background: "#5b9bd5", padding: "5px 10px", display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 12 }}>🔌</span>
+                    <span style={{ fontSize: 10, fontWeight: "bold", color: "#fff", letterSpacing: 1 }}>THE PLUG</span>
                   </div>
                   {/* Body */}
-                  <div style={{ background: "#f5fff8", padding: "14px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ background: "#f0f6ff", padding: "14px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
                     <p style={{ fontSize: 13, fontWeight: "bold", color: "#000", lineHeight: 1.4 }}>
                       Lightweight Cotton
                     </p>
                     <p style={{ fontSize: 9, color: "#444", lineHeight: 1.7 }}>
-                      Softer, lighter cotton with a clean, minimal design. Same MMM brand, same fit, easier on the wallet. Perfect if you want to rep the culture without breaking the bank.
+                      Not our heaviest tee — and that&apos;s the point. Lighter cotton, simpler print, lower price. No frills, no premium weight. If you want to rep MMM on a budget, this is your way in. Still real. Still us. Just lighter on the wallet AND the shirt.
                     </p>
-                    <div style={{ borderTop: "1px solid #ccc", paddingTop: 8, display: "flex", flexDirection: "column", gap: 4 }}>
-                      {["✅ Lightweight soft cotton", "✅ Clean minimal design", "✅ Same great fit", "✅ More wallet-friendly"].map(item => (
-                        <span key={item} style={{ fontSize: 9, color: "#1a7a4a" }}>{item}</span>
+                    <div style={{ borderTop: "1px solid #c0d4e8", paddingTop: 8, display: "flex", flexDirection: "column", gap: 4 }}>
+                      {[
+                        { text: "✅ Lightweight cotton", warn: false },
+                        { text: "✅ Simplified design / fewer colors", warn: false },
+                        { text: "✅ Lower price point", warn: false },
+                        { text: "⚠️ Not as thick as Premium — lighter feel", warn: true },
+                        { text: "⚠️ Basic print — not the full graphic", warn: true },
+                      ].map(({ text, warn }) => (
+                        <span key={text} style={{ fontSize: 9, color: warn ? "#996600" : "#1a4a7a" }}>{text}</span>
                       ))}
                     </div>
-                    <div style={{ marginTop: 4, background: "#e8fff2", border: "1px solid #5dbb8a", padding: "6px 10px", textAlign: "center" }}>
-                      <span style={{ fontSize: 10, fontWeight: "bold", color: "#1a7a4a", letterSpacing: 1 }}>STILL MMM 💚</span>
+                    <div style={{ marginTop: 4, background: "#dceeff", border: "1px solid #5b9bd5", padding: "6px 10px", textAlign: "center" }}>
+                      <span style={{ fontSize: 10, fontWeight: "bold", color: "#1a4a7a", letterSpacing: 1 }}>YOUR WAY IN 🔌</span>
                     </div>
                   </div>
                 </div>
@@ -131,7 +137,7 @@ export default function SizesPage() {
               </div>
 
               <div style={{ marginTop: 10, background: "#fffef0", border: "1px dashed #ccc", padding: "8px 12px", fontSize: 9, color: "#666", lineHeight: 1.7 }}>
-                <strong style={{ color: "#000" }}>Both tiers share the same size chart below.</strong> The sizing is consistent across Premium and Budget options — no need to size differently.
+                <strong style={{ color: "#000" }}>Both tiers share the same size chart below.</strong> The sizing is consistent across Premium and The Plug — no need to size differently.
               </div>
             </div>
 
