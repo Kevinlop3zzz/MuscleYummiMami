@@ -26,12 +26,22 @@ export async function POST(req: NextRequest) {
       }),
     });
 
-    if (!res.ok) {
-      console.error("Love letter sheet error:", res.status, await res.text());
+    const text = await res.text();
+    console.log("Apps Script response:", text);
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.error("Could not parse Apps Script response:", text);
       return NextResponse.json({ error: "Could not send. Try again." }, { status: 500 });
     }
 
-    const data = await res.json();
+    if (!res.ok || data.success === false) {
+      console.error("Apps Script error:", data.error || text);
+      return NextResponse.json({ error: data.error || "Could not send. Try again." }, { status: 500 });
+    }
+
     return NextResponse.json(data);
   } catch (err) {
     console.error("Love letter error:", err);
