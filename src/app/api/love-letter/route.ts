@@ -5,17 +5,21 @@ const GOOGLE_SHEET_URL =
 
 // Google Apps Script returns a 302 redirect — Node.js fetch changes POST to GET on 302,
 // dropping the body. This helper manually follows the redirect keeping the POST body intact.
+// The second fetch uses redirect:"follow" so any further redirects are handled automatically.
+// AbortSignal.timeout enforces a 10s total cap so the serverless function never hangs.
 async function postToScript(url: string, body: object): Promise<Response> {
+  const signal = AbortSignal.timeout(10000);
   const options: RequestInit = {
     method: "POST",
     headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(body),
     redirect: "manual",
+    signal,
   };
   const res = await fetch(url, options);
   if (res.status >= 300 && res.status < 400) {
     const location = res.headers.get("location");
-    if (location) return fetch(location, options);
+    if (location) return fetch(location, { ...options, redirect: "follow" });
   }
   return res;
 }

@@ -7,16 +7,23 @@ export function AnnouncementApply() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleApply = async () => {
-    if (!email) return;
+  const handleApply = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || status === "loading") return;
     setStatus("loading");
+
+    // 15-second timeout so the button doesn't spin forever on a bad connection
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     try {
       const res = await fetch("/api/model-apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ source: "quick", email }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       if (res.ok) {
         setStatus("success");
@@ -24,7 +31,8 @@ export function AnnouncementApply() {
       } else {
         setStatus("error");
       }
-    } catch {
+    } catch (err) {
+      clearTimeout(timeoutId);
       setStatus("error");
     }
   };
@@ -39,31 +47,48 @@ export function AnnouncementApply() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
+    /* <form> wrapper means the mobile keyboard's "Go" / "Done" button submits
+       correctly on both iOS Safari and Android Chrome without a separate
+       onKeyDown handler. */
+    <form onSubmit={handleApply} style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 4 }}>
       <div style={{ display: "flex", gap: 6 }}>
         <input
           type="email"
+          autoComplete="email"
           placeholder="Enter your email..."
           value={email}
           onChange={e => setEmail(e.target.value)}
-          onKeyDown={e => e.key === "Enter" && handleApply()}
           disabled={status === "loading"}
-          style={{ flex: 1, border: "1.5px solid #888", padding: "4px 6px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", opacity: status === "loading" ? 0.6 : 1 }}
+          style={{ flex: 1, border: "1.5px solid #888", padding: "4px 6px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", opacity: status === "loading" ? 0.6 : 1 }}
         />
         <button
-          onClick={handleApply}
+          type="submit"
           disabled={status === "loading"}
-          style={{ background: "#000", color: "#fff", border: "1.5px solid #000", padding: "4px 10px", fontSize: 11, fontWeight: "bold", cursor: status === "loading" ? "wait" : "pointer", fontFamily: "Geneva, Arial, sans-serif", boxShadow: "1px 1px 0 #555", opacity: status === "loading" ? 0.6 : 1 }}
+          style={{
+            background: "#000",
+            color: "#fff",
+            border: "1.5px solid #000",
+            padding: "4px 10px",
+            fontWeight: "bold",
+            cursor: status === "loading" ? "wait" : "pointer",
+            fontFamily: "Geneva, Arial, sans-serif",
+            boxShadow: "1px 1px 0 #555",
+            opacity: status === "loading" ? 0.6 : 1,
+            // Block double-taps during submission on Android
+            pointerEvents: status === "loading" ? "none" : "auto",
+            touchAction: "manipulation",
+          }}
         >
           {status === "loading" ? "..." : "Apply"}
         </button>
       </div>
       {status === "error" && (
-        <div style={{ fontSize: 9, color: "#b71c1c" }}>Could not send. Try again or <Link href="/models" style={{ color: "#b71c1c" }}>use full form</Link>.</div>
+        /* Bumped from 9px (unreadable on mobile) to 11px */
+        <div style={{ fontSize: 11, color: "#b71c1c" }}>Could not send. Try again or <Link href="/models" style={{ color: "#b71c1c" }}>use full form</Link>.</div>
       )}
       <div style={{ fontSize: 9, color: "#888" }}>
         Want to share more? <Link href="/models" style={{ color: "#555" }}>Fill out the full application →</Link>
       </div>
-    </div>
+    </form>
   );
 }

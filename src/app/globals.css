@@ -4,6 +4,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Remove the grey tap flash on iOS — preserves the retro aesthetic on mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -11,6 +13,8 @@ body {
   font-family: "Geneva", "Charcoal", "Chicago", Arial, sans-serif;
   font-size: 12px;
   -webkit-font-smoothing: none;
+  /* Prevent Android pull-to-refresh from wiping form data mid-scroll */
+  overscroll-behavior-y: contain;
 }
 
 /* Classic Mac OS System 7 checkered desktop pattern */
@@ -44,13 +48,18 @@ body {
   background: #fff;
 }
 
-.desktop-icon:hover .folder-body {
-  filter: brightness(1.2);
-}
+/* Only apply hover effects on devices with a real pointer (mouse/trackpad).
+   On touchscreens :hover "sticks" after first tap — wrapping in this media
+   query prevents icons from staying highlighted after a tap on iOS/Android. */
+@media (hover: hover) {
+  .desktop-icon:hover .folder-body {
+    filter: brightness(1.2);
+  }
 
-.desktop-icon:hover span {
-  background: #000080;
-  color: #fff;
+  .desktop-icon:hover span {
+    background: #000080;
+    color: #fff;
+  }
 }
 
 a {
@@ -77,18 +86,21 @@ a {
   text-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
-.cereal-icon:hover > div:first-child {
-  transform: translateY(-4px) rotate(-2deg);
-  transition: transform 0.15s ease;
-}
-
 .cereal-icon > div:first-child {
   transition: transform 0.15s ease;
 }
 
-/* Fix Android: inputs/textareas inside a userSelect:none parent won't
-   show the keyboard. Override globally so forms always work. */
-input, textarea, select {
+@media (hover: hover) {
+  .cereal-icon:hover > div:first-child {
+    transform: translateY(-4px) rotate(-2deg);
+    transition: transform 0.15s ease;
+  }
+}
+
+/* Fix Android: inputs/textareas/labels inside a userSelect:none parent won't
+   show the keyboard or register taps correctly. Override globally so all
+   interactive form elements always work — including radio button labels. */
+input, textarea, select, label {
   user-select: text !important;
   -webkit-user-select: text !important;
   font-size: 16px !important; /* prevents iOS/Android auto-zoom on focus */
@@ -104,8 +116,9 @@ input, textarea, select {
   /* Menu bar scrollable on mobile */
   .mobile-menu-scroll {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    /* Prevent horizontal swipe chaining into body scroll on Android */
+    overscroll-behavior-x: contain;
   }
   .mobile-menu-scroll::-webkit-scrollbar { display: none; }
 

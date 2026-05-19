@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 export default function LoveLetterPage() {
   const [form, setForm] = useState({ name: "", email: "", role: "", letter: "" });
   const [photo, setPhoto] = useState<{ base64: string; type: string; name: string } | null>(null);
+  const [photoError, setPhotoError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
@@ -14,6 +15,16 @@ export default function LoveLetterPage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // 3MB client-side limit — Vercel's serverless body limit is 4.5MB and
+    // base64 encoding adds ~33% overhead, so 3MB raw ≈ 4MB base64 (safe).
+    // Without this check, large photos silently fail or time out on mobile data.
+    if (file.size > 3 * 1024 * 1024) {
+      setPhotoError("Photo is too large. Please choose an image under 3MB.");
+      if (fileRef.current) fileRef.current.value = "";
+      return;
+    }
+
+    setPhotoError("");
     const reader = new FileReader();
     reader.onload = () => {
       setPhoto({ base64: reader.result as string, type: file.type, name: file.name });
@@ -25,6 +36,10 @@ export default function LoveLetterPage() {
     e.preventDefault();
     setStatus("loading");
 
+    // 15-second timeout — prevents infinite "Sending..." on a weak mobile signal
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const res = await fetch("/api/love-letter", {
         method: "POST",
@@ -35,7 +50,9 @@ export default function LoveLetterPage() {
           photoType: photo?.type || "",
           photoName: photo?.name || "",
         }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       const data = await res.json();
 
@@ -44,19 +61,22 @@ export default function LoveLetterPage() {
         setMessage("Letter received! We read every single one. 💛");
         setForm({ name: "", email: "", role: "", letter: "" });
         setPhoto(null);
+        setPhotoError("");
         if (fileRef.current) fileRef.current.value = "";
       } else {
         setStatus("error");
         setMessage(data.error || "Something went wrong. Try again.");
       }
-    } catch {
+    } catch (err) {
+      clearTimeout(timeoutId);
       setStatus("error");
-      setMessage("Could not connect. Try again.");
+      const isTimeout = err instanceof Error && err.name === "AbortError";
+      setMessage(isTimeout ? "Request timed out. Check your connection and try again." : "Could not connect. Try again.");
     }
   };
 
   return (
-    <div style={{ width: "100vw", minHeight: "100vh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif", userSelect: "none" }}>
+    <div style={{ width: "100%", minHeight: "100dvh", background: "#a4bccc", fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif" }}>
       <MenuBar active="Love Letter" />
 
       <div className="mobile-page-padding" style={{ paddingTop: 48, padding: "48px 60px 60px", display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -111,10 +131,11 @@ export default function LoveLetterPage() {
                 <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>Your Name</label>
                 <input
                   type="text"
+                  autoComplete="name"
                   placeholder="What should we call you?"
                   value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
@@ -123,19 +144,21 @@ export default function LoveLetterPage() {
                 <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>Your Email</label>
                 <input
                   type="email"
+                  autoComplete="email"
                   placeholder="So we can write back..."
                   value={form.email}
                   onChange={e => setForm({ ...form, email: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
               {/* Role */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>I am a...</label>
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                {/* Increased padding on radio labels for 44px-ish tap targets on mobile */}
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {["Customer 🛒", "Model 📸", "Fan 💛", "Other"].map((opt) => (
-                    <label key={opt} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 10, cursor: "pointer" }}>
+                    <label key={opt} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, cursor: "pointer", padding: "8px 4px" }}>
                       <input
                         type="radio"
                         name="role"
@@ -159,7 +182,7 @@ export default function LoveLetterPage() {
                   rows={8}
                   value={form.letter}
                   onChange={e => setForm({ ...form, letter: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "8px", fontSize: 11, fontFamily: "Georgia, serif", background: "#fff", outline: "none", resize: "vertical", lineHeight: 1.8, color: "#222" }}
+                  style={{ border: "1.5px solid #888", padding: "8px", fontFamily: "Georgia, serif", background: "#fff", outline: "none", resize: "vertical", lineHeight: 1.8, color: "#222" }}
                 />
               </div>
 
@@ -171,28 +194,37 @@ export default function LoveLetterPage() {
                 <p style={{ fontSize: 9, color: "#888", marginBottom: 4 }}>
                   Models — drop your best shot. Customers — show us your fit. Fans — share the love. 📸
                 </p>
-                <div
+                {/* Using <label htmlFor> instead of div+onClick — the label
+                    pattern reliably opens the file picker on all iOS versions
+                    including iOS 15 where programmatic .click() fails. */}
+                <label
+                  htmlFor="photo-upload"
                   style={{ border: "1.5px dashed #aaa", background: "#fff", padding: "14px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, cursor: "pointer" }}
-                  onClick={() => fileRef.current?.click()}
                 >
                   <span style={{ fontSize: 22 }}>{photo ? "✅" : "📁"}</span>
                   <span style={{ fontSize: 10, color: "#555" }}>
-                    {photo ? photo.name : "Click to choose a photo"}
+                    {photo ? photo.name : "Tap to choose a photo"}
                   </span>
-                  <span style={{ fontSize: 9, color: "#aaa" }}>JPG, PNG, GIF — max 10MB</span>
+                  <span style={{ fontSize: 9, color: "#aaa" }}>JPG, PNG, GIF — max 3MB</span>
                   <input
+                    id="photo-upload"
                     ref={fileRef}
                     type="file"
                     accept="image/*"
                     onChange={handlePhoto}
                     style={{ display: "none" }}
                   />
-                </div>
+                </label>
+                {photoError && (
+                  <div style={{ fontSize: 11, color: "#b71c1c", background: "#ffebee", border: "1.5px solid #e53935", padding: "6px 10px" }}>
+                    {photoError}
+                  </div>
+                )}
                 {photo && (
                   <button
                     type="button"
-                    onClick={() => { setPhoto(null); if (fileRef.current) fileRef.current.value = ""; }}
-                    style={{ fontSize: 9, color: "#888", background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}
+                    onClick={() => { setPhoto(null); setPhotoError(""); if (fileRef.current) fileRef.current.value = ""; }}
+                    style={{ fontSize: 11, color: "#888", background: "none", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}
                   >
                     ✕ Remove photo
                   </button>
@@ -209,14 +241,16 @@ export default function LoveLetterPage() {
                       background: "#000",
                       color: "#fff",
                       border: "2px solid #000",
-                      padding: "6px 20px",
-                      fontSize: 11,
+                      padding: "10px 24px",
                       fontWeight: "bold",
                       cursor: status === "loading" ? "wait" : "pointer",
                       fontFamily: "Geneva, Arial, sans-serif",
                       boxShadow: "2px 2px 0 #555",
                       letterSpacing: 1,
-                      opacity: status === "loading" ? 0.6 : 1
+                      opacity: status === "loading" ? 0.6 : 1,
+                      pointerEvents: status === "loading" ? "none" : "auto",
+                      touchAction: "manipulation",
+                      minHeight: 44,
                     }}
                   >
                     {status === "loading" ? "Sending..." : "Send Letter 💌"}

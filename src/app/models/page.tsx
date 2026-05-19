@@ -19,12 +19,18 @@ export default function ModelsPage() {
     e.preventDefault();
     setStatus("loading");
 
+    // 15-second timeout — prevents infinite "Sending..." on poor mobile signal
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const res = await fetch("/api/model-apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, source: "full" }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       const data = await res.json();
 
@@ -36,19 +42,20 @@ export default function ModelsPage() {
         setStatus("error");
         setMessage(data.error || "Something went wrong. Try again.");
       }
-    } catch {
+    } catch (err) {
+      clearTimeout(timeoutId);
       setStatus("error");
-      setMessage("Could not connect. Try again.");
+      const isTimeout = err instanceof Error && err.name === "AbortError";
+      setMessage(isTimeout ? "Request timed out. Check your connection and try again." : "Could not connect. Try again.");
     }
   };
 
   return (
     <div style={{
-      width: "100vw",
-      minHeight: "100vh",
+      width: "100%",
+      minHeight: "100dvh",
       background: "#a4bccc",
       fontFamily: "Geneva, Charcoal, Chicago, Arial, sans-serif",
-      userSelect: "none"
     }}>
       <MenuBar active="Models" />
 
@@ -106,10 +113,11 @@ export default function ModelsPage() {
                 <input
                   type="text"
                   required
+                  autoComplete="name"
                   placeholder="Your name"
                   value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
@@ -119,10 +127,11 @@ export default function ModelsPage() {
                 <input
                   type="email"
                   required
+                  autoComplete="email"
                   placeholder="your@email.com"
                   value={form.email}
                   onChange={e => setForm({ ...form, email: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
@@ -133,10 +142,11 @@ export default function ModelsPage() {
                 </label>
                 <input
                   type="tel"
+                  autoComplete="tel"
                   placeholder="(555) 000-0000"
                   value={form.phone}
                   onChange={e => setForm({ ...form, phone: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
@@ -147,19 +157,21 @@ export default function ModelsPage() {
                 </label>
                 <input
                   type="text"
+                  autoComplete="off"
                   placeholder="@yourhandle"
                   value={form.instagram}
                   onChange={e => setForm({ ...form, instagram: e.target.value })}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none" }}
                 />
               </div>
 
               {/* Type */}
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <label style={{ fontSize: 10, fontWeight: "bold", color: "#000" }}>I want to be a...</label>
-                <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                {/* Increased padding on radio labels for 44px-ish tap targets on mobile */}
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {["Model", "Artist", "Influencer", "Photographer"].map(opt => (
-                    <label key={opt} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 10, cursor: "pointer" }}>
+                    <label key={opt} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, cursor: "pointer", padding: "8px 4px" }}>
                       <input
                         type="radio"
                         name="type"
@@ -182,8 +194,8 @@ export default function ModelsPage() {
                   placeholder="Your vibe, your look, why you rep MMM..."
                   value={form.message}
                   onChange={e => setForm({ ...form, message: e.target.value })}
-                  rows={4}
-                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontSize: 11, fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", resize: "vertical" }}
+                  rows={5}
+                  style={{ border: "1.5px solid #888", padding: "5px 8px", fontFamily: "Geneva, Arial, sans-serif", background: "#fff", outline: "none", resize: "vertical" }}
                 />
               </div>
 
@@ -197,14 +209,16 @@ export default function ModelsPage() {
                       background: "#000",
                       color: "#fff",
                       border: "2px solid #000",
-                      padding: "6px 20px",
-                      fontSize: 11,
+                      padding: "10px 24px",
                       fontWeight: "bold",
                       cursor: status === "loading" ? "wait" : "pointer",
                       fontFamily: "Geneva, Arial, sans-serif",
                       boxShadow: "2px 2px 0 #555",
                       letterSpacing: 1,
-                      opacity: status === "loading" ? 0.6 : 1
+                      opacity: status === "loading" ? 0.6 : 1,
+                      pointerEvents: status === "loading" ? "none" : "auto",
+                      touchAction: "manipulation",
+                      minHeight: 44,
                     }}
                   >
                     {status === "loading" ? "Sending..." : "Apply Now 🔥"}

@@ -5,7 +5,9 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  // Do NOT set maximumScale — disabling pinch-to-zoom is an accessibility
+  // violation (WCAG 1.4.4) and iOS 10+ ignores it anyway.
+  themeColor: "#a4bccc", // iOS address bar matches the site's mac-desktop blue
 };
 
 const greatVibes = Great_Vibes({
