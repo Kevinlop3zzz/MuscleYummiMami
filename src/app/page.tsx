@@ -164,6 +164,7 @@ export default function Home() {
             <FolderIcon label="Contact"       color="#e87070" href="#"              icon="📡" />
             <FolderIcon label="Love Letter"   color="#e8608a" href="/love-letter"   icon="💌" />
             <FolderIcon label="Terms"         color="#b0b0b0" href="/terms"         icon="📋" />
+            <FolderIcon label="Privacy"       color="#90c8a8" href="/privacy"       icon="🔒" />
           </div>
 
           {/* Scroll bar area */}
@@ -492,6 +493,7 @@ export default function Home() {
                 { label: "Love Letter", icon: "💌", href: "/love-letter", color: "#e8608a" },
                 { label: "Size Guide", icon: "📐", href: "/sizes", color: "#ffd93d" },
                 { label: "Terms", icon: "📋", href: "/terms", color: "#b0b0b0" },
+                { label: "Privacy", icon: "🔒", href: "/privacy", color: "#90c8a8" },
               ].map(({ label, icon, href, color }) => (
                 <Link key={label} href={href} className="desktop-icon" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, cursor: "pointer" }}>
                   <div style={{ position: "relative", width: 40, height: 54 }}>
