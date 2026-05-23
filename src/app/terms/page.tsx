@@ -321,7 +321,7 @@ For legal matters:             legal@musclemami.fit
 For IP / brand enforcement:  legal@musclemami.fit
 For privacy / ARCO rights:   privacidad@musclemami.fit
 Website:                           musclemami.fit
-Instagram:                        @muscleyummimami
+Instagram:                        @muscle.yummi.mami.fit_models
 
 Company Location:              Hermosillo, Sonora, México
 
