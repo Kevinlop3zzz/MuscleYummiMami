@@ -15,11 +15,13 @@ const sections = [
   {
     title: "AGREEMENT TO TERMS",
     icon: "01",
-    content: `Welcome to musclemami.fit — the official online store of Muscle Yummi Mami. These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "Customer," "you") and Muscle Yummi Mami ("we," "us," "our," "MMM") governing your access to and use of this website and the purchase of our products.
+    content: `Welcome to musclemami.fit — the official online store of Muscle Yummi Mami, a company legally organized and operating under the laws of the United Mexican States ("México"), with its principal place of business in Hermosillo, Sonora, México. These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User," "Customer," "you") and Muscle Yummi Mami ("we," "us," "our," "MMM") governing your access to and use of this website and the purchase of our products.
 
 BY ACCESSING THIS SITE, CREATING AN ACCOUNT, OR COMPLETING A PURCHASE, YOU CONFIRM THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS IN THEIR ENTIRETY. If you do not agree, you must immediately stop using this site.
 
-We reserve the right to update these Terms at any time. Updates take effect immediately upon posting. Your continued use of the site constitutes acceptance of the revised Terms. Check this page regularly.`
+We reserve the right to update these Terms at any time. Updates take effect immediately upon posting. Your continued use of the site constitutes acceptance of the revised Terms. Check this page regularly.
+
+NOTE: These Terms are governed by Mexican law. International customers agree to these Terms as a condition of purchasing from a Mexican-based seller.`
   },
   {
     title: "ELIGIBILITY & AGE REQUIREMENT",
@@ -31,7 +33,13 @@ To place an order, you must be at least 18 years of age or have the permission a
   {
     title: "COPYRIGHT, TRADEMARKS & INTELLECTUAL PROPERTY",
     icon: "03",
-    content: `All content on this site — including but not limited to the Muscle Yummi Mami name, the "MMM" mark, our logo, all original apparel and footwear designs, graphics, photographs, artwork, slogans, cereal box product icons, the "Mami Monday" feature, the "Art Doesn't Stop at Bars" concept, all written content, and all other creative works — are the exclusive intellectual property of Muscle Yummi Mami and are protected under the United States Copyright Act (17 U.S.C. § 101 et seq.), the Lanham Act (15 U.S.C. § 1051 et seq.), and applicable international treaties.
+    content: `All content on this site — including but not limited to the Muscle Yummi Mami name, the "MMM" mark, our logo, all original apparel and footwear designs, graphics, photographs, artwork, slogans, the "Mami Monday" feature, the "Art Doesn't Stop at Bars" concept, all written content, and all other creative works — are the exclusive intellectual property of Muscle Yummi Mami and are protected under:
+
+• Ley Federal del Derecho de Autor (LFDA) — Mexican Federal Copyright Law
+• Ley Federal de Protección a la Propiedad Industrial (LFPPI) — Mexican Industrial Property Protection Law
+• The Berne Convention for the Protection of Literary and Artistic Works
+• The Agreement on Trade-Related Aspects of Intellectual Property Rights (TRIPS)
+• All other applicable international intellectual property treaties
 
 YOU MAY NOT, without our express prior written permission:
 • Copy, reproduce, republish, download, or distribute any content from this site
@@ -56,18 +64,18 @@ PROHIBITED CONDUCT INCLUDES:
 
 ENFORCEMENT ACTIONS: Violators may face any or all of the following:
 • Immediate cease and desist demand
-• DMCA takedown notices filed with all relevant platforms
-• Civil litigation seeking statutory damages up to $150,000 per infringed work under 17 U.S.C. § 504(c)(2)
-• Claims for actual damages, lost profits, and disgorgement of infringer's profits
+• Formal complaint filed with the Instituto Mexicano de la Propiedad Industrial (IMPI)
+• Civil action for damages under the Ley Federal de Protección a la Propiedad Industrial (LFPPI) and Ley Federal del Derecho de Autor (LFDA)
+• Criminal complaint under the Código Penal Federal (Artículos 223–229 — delitos en materia de derechos de autor; Artículos 223 bis — falsificación de marcas)
+• DMCA takedown notices filed with US-based platforms under 17 U.S.C. § 512
 • Injunctive relief to immediately halt all infringing activity
-• Criminal referral under 18 U.S.C. § 2320 (trafficking in counterfeit goods — up to 10 years federal imprisonment for first offense)
 • Public disclosure of the infringement across all MMM platforms
 
 We do not warn twice. We do not negotiate with thieves. If you steal from this brand, we will find you, and we will act.
 
-TO REPORT INFRINGEMENT: If you witness unauthorized use of our intellectual property, please contact legal@musclemami.fit immediately. We act fast, and we appreciate the community's help protecting what we've built.
+TO REPORT INFRINGEMENT: If you witness unauthorized use of our intellectual property, please contact legal@musclemami.fit immediately.
 
-DMCA DESIGNATED AGENT: To submit a formal DMCA takedown notice, contact legal@musclemami.fit with the subject line "DMCA Notice." Your notice must comply with 17 U.S.C. § 512(c)(3) and include: (1) identification of the copyrighted work; (2) identification of the infringing material and its URL; (3) your contact information; (4) a statement of good faith belief; (5) a statement of accuracy under penalty of perjury; and (6) your physical or electronic signature.`
+IP COMPLAINTS: To submit a formal intellectual property complaint, contact legal@musclemami.fit with the subject line "IP Notice." Your notice must include: (1) identification of the protected work; (2) identification of the infringing material and its URL; (3) your contact information; (4) a statement of good faith belief; and (5) your signature.`
   },
   {
     title: "USER-GENERATED CONTENT & SUBMITTED MEDIA LICENSE",
@@ -111,7 +119,9 @@ To request removal of previously submitted content, contact contact@musclemami.f
 
 In the event of a pricing error, we will notify you and give you the option to confirm the order at the correct price or receive a full refund.
 
-We reserve the right to change prices at any time without notice. The price displayed at checkout is the price you will be charged. Promotional pricing is valid only for the stated promotional period.`
+We reserve the right to change prices at any time without notice. The price displayed at checkout is the price you will be charged. Promotional pricing is valid only for the stated promotional period.
+
+Prices may be displayed in USD for international convenience. The functional currency of Muscle Yummi Mami is the Mexican Peso (MXN). Exchange rate fluctuations are outside our control and are not grounds for refund.`
   },
   {
     title: "CUSTOM & LIMITED-EDITION DROPS",
@@ -128,9 +138,9 @@ We are not responsible for missed drop windows. Subscribe to our email list or f
   {
     title: "PAYMENT, FRAUD & ORDER CANCELLATION",
     icon: "09",
-    content: `All payments are processed securely through our payment processor. By placing an order, you represent that you are the authorized holder of the payment method used and that all billing information provided is accurate.
+    content: `All payments are processed securely through our payment processor (Stripe). By placing an order, you represent that you are the authorized holder of the payment method used and that all billing information provided is accurate.
 
-FRAUD & CHARGEBACKS: Any attempt to use stolen payment credentials, file a fraudulent chargeback, or otherwise defraud Muscle Yummi Mami will be reported to the appropriate authorities and payment networks. We reserve the right to blacklist any customer found to have engaged in fraudulent activity, refuse future orders, and pursue civil and criminal remedies.
+FRAUD & CHARGEBACKS: Any attempt to use stolen payment credentials, file a fraudulent chargeback, or otherwise defraud Muscle Yummi Mami will be reported to the appropriate authorities, payment networks, and — where applicable — to the Procuraduría Federal del Consumidor (PROFECO) and the Unidad de Inteligencia Financiera (UIF). We reserve the right to blacklist any customer found to have engaged in fraudulent activity, refuse future orders, and pursue civil and criminal remedies under Mexican and applicable international law.
 
 ORDER CANCELLATION: Once an order enters production, it cannot be cancelled. For made-to-order or custom items, production begins within 24–48 hours of order confirmation. If you need to cancel within that window, contact us immediately at contact@musclemami.fit — we will do our best but cannot guarantee cancellation once production has begun.
 
@@ -154,15 +164,18 @@ To initiate a defect or error claim, contact contact@musclemami.fit within 7 day
 (2) Photos of the defect or incorrect item
 (3) A brief description of the issue
 
-We will review your claim and respond within 3–5 business days. Approved claims will be resolved with a replacement or store credit at our discretion.`
+We will review your claim and respond within 3–5 business days. Approved claims will be resolved with a replacement or store credit at our discretion.
+
+MEXICAN CONSUMER RIGHTS: Customers in México are entitled to the consumer protections established by the Ley Federal de Protección al Consumidor (LFPC) and may file complaints with the Procuraduría Federal del Consumidor (PROFECO) at www.profeco.gob.mx or by calling 800-468-8722. Nothing in these Terms limits the rights granted to you by applicable mandatory consumer protection laws.`
   },
   {
     title: "SHIPPING & DELIVERY",
     icon: "11",
-    content: `We ship within the United States and to select international destinations. Shipping times are estimates provided by the carrier and are not guaranteed. Muscle Yummi Mami is not responsible for:
+    content: `We ship within México, the United States, and to select international destinations. Shipping times are estimates provided by the carrier and are not guaranteed. Muscle Yummi Mami is not responsible for:
 • Carrier delays, lost packages, or packages marked delivered but not received
 • Delays caused by weather, natural disasters, or events outside our control
 • Customs delays on international orders
+• Delays resulting from incorrect shipping information provided by the customer
 
 Once your order has been handed to the carrier and a tracking number has been issued, the package is in the carrier's custody. For lost or stolen packages, you must file a claim directly with the carrier. We are happy to assist with documentation where possible, but we are not liable for packages lost after confirmed handoff to the carrier.
 
@@ -173,7 +186,7 @@ Tracking information will be emailed to you when your order ships. It may take u
     icon: "12",
     content: `International customers are responsible for all import duties, taxes, customs fees, and brokerage charges imposed by their country's government. These charges are not included in our product or shipping prices and are not our responsibility.
 
-We are required by law to accurately declare the value and contents of all international shipments. We cannot mark packages as "gifts" or undervalue shipments to reduce customs fees. Refusal to pay customs duties may result in the package being returned or destroyed by customs — in such cases, we are not responsible and refunds will not be issued.
+We are required by law to accurately declare the value and contents of all international shipments in compliance with Mexican customs law (Ley Aduanera) and the laws of the destination country. We cannot mark packages as "gifts" or undervalue shipments to reduce customs fees. Refusal to pay customs duties may result in the package being returned or destroyed by customs — in such cases, we are not responsible and refunds will not be issued.
 
 If your country restricts the import of apparel or related goods, it is your responsibility to be aware of and comply with those restrictions before placing an order.`
   },
@@ -191,12 +204,12 @@ Slight variations between the product shown online and the physical product rece
 
 We do not warrant that: (a) the site will be uninterrupted, error-free, or secure; (b) defects will be corrected; (c) the site or servers are free of viruses or harmful components; or (d) results obtained from use of the site will be accurate or reliable.
 
-Some jurisdictions do not allow the exclusion of implied warranties, so some of the above exclusions may not apply to you.`
+To the extent that applicable mandatory consumer protection law (including the Ley Federal de Protección al Consumidor) grants you rights that cannot be disclaimed, those rights remain unaffected by this section.`
   },
   {
     title: "LIMITATION OF LIABILITY",
     icon: "15",
-    content: `TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL MUSCLE YUMMI MAMI, ITS OWNERS, EMPLOYEES, AGENTS, PARTNERS, OR SUPPLIERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES — INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, REVENUE, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES — ARISING OUT OF OR RELATED TO:
+    content: `TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE MEXICAN LAW, IN NO EVENT SHALL MUSCLE YUMMI MAMI, ITS OWNERS, EMPLOYEES, AGENTS, PARTNERS, OR SUPPLIERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES — INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, REVENUE, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES — ARISING OUT OF OR RELATED TO:
 
 • Your use of or inability to use this site
 • Any products purchased through this site
@@ -204,9 +217,9 @@ Some jurisdictions do not allow the exclusion of implied warranties, so some of 
 • Any third-party conduct or content on this site
 • Any other matter relating to our products or services
 
-IN NO EVENT SHALL OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS EXCEED THE GREATER OF: (A) THE TOTAL AMOUNT YOU PAID TO US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR (B) ONE HUNDRED DOLLARS ($100.00 USD).
+IN NO EVENT SHALL OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS EXCEED THE GREATER OF: (A) THE TOTAL AMOUNT YOU PAID TO US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR (B) ONE HUNDRED US DOLLARS ($100.00 USD) OR ITS EQUIVALENT IN MEXICAN PESOS AT THE EXCHANGE RATE ON THE DATE OF THE CLAIM.
 
-These limitations apply regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise) and even if we have been advised of the possibility of such damages.`
+These limitations apply regardless of the theory of liability (contract, tort, negligence, strict liability, or otherwise) and even if we have been advised of the possibility of such damages. Nothing in this section limits liability for gross negligence, willful misconduct, or fraud.`
   },
   {
     title: "INDEMNIFICATION",
@@ -224,69 +237,101 @@ This obligation survives termination of your relationship with Muscle Yummi Mami
   {
     title: "FORCE MAJEURE",
     icon: "17",
-    content: `Muscle Yummi Mami shall not be liable for any delay or failure to perform our obligations under these Terms where such delay or failure results from circumstances beyond our reasonable control, including but not limited to: acts of God, natural disasters, pandemics, supply chain disruptions, labor disputes, power outages, government actions or restrictions, carrier failures, cyberattacks, or civil unrest.
+    content: `Muscle Yummi Mami shall not be liable for any delay or failure to perform our obligations under these Terms where such delay or failure results from circumstances beyond our reasonable control, including but not limited to: acts of God, natural disasters, pandemics, supply chain disruptions, labor disputes, power outages, government actions or restrictions, carrier failures, cyberattacks, or civil unrest ("caso fortuito o fuerza mayor" as recognized under Mexican law).
 
 In such events, we will make reasonable efforts to notify affected customers and fulfill orders as soon as practicable.`
   },
   {
-    title: "DISPUTE RESOLUTION & BINDING ARBITRATION",
+    title: "DISPUTE RESOLUTION",
     icon: "18",
     content: `PLEASE READ THIS SECTION CAREFULLY — IT AFFECTS YOUR LEGAL RIGHTS.
 
-INFORMAL RESOLUTION: Before initiating any formal legal proceeding, you agree to first contact us at legal@musclemami.fit and attempt to resolve the dispute informally. We will make a good-faith effort to resolve the issue within 30 days. If we cannot resolve the dispute informally, either party may proceed to arbitration as set forth below.
+INFORMAL RESOLUTION: Before initiating any formal legal proceeding, you agree to first contact us at legal@musclemami.fit and attempt to resolve the dispute informally. We will make a good-faith effort to resolve the issue within 30 calendar days.
 
-BINDING ARBITRATION: Except as set forth below, any dispute, claim, or controversy arising out of or relating to these Terms, our products, or your use of this site shall be resolved exclusively by binding arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, rather than in court. The arbitration shall take place in the United States. The arbitrator's decision shall be final and binding.
+PROFECO CONCILIATION: If informal resolution fails and you are a consumer in México, you may file a complaint with the Procuraduría Federal del Consumidor (PROFECO) through its CONCILIANET platform at www.profeco.gob.mx or in person at the nearest PROFECO office. We agree to participate in PROFECO conciliation proceedings in good faith.
 
-CLASS ACTION WAIVER: YOU AND MUSCLE YUMMI MAMI AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE ACTION. The arbitrator may not consolidate claims of more than one person and may not preside over any form of a representative or class proceeding.
+ARBITRATION: If the dispute is not resolved through PROFECO or informal means, either party may submit the dispute to binding arbitration administered by the Centro de Arbitraje de México (CAM) under its applicable rules. The arbitration shall be conducted in Spanish, seated in Hermosillo, Sonora, México. The arbitrator's decision shall be final and binding and may be enforced in any court of competent jurisdiction.
 
-EXCEPTIONS: Either party may seek emergency injunctive or other equitable relief in a court of competent jurisdiction to prevent irreparable harm pending arbitration. Claims involving intellectual property infringement may also be brought in court.
+CLASS ACTION WAIVER: YOU AND MUSCLE YUMMI MAMI AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE ACTION.
 
-If the class action waiver is found unenforceable, then the entirety of this arbitration agreement shall be null and void.`
+EXCEPTIONS: Either party may seek emergency injunctive or other equitable relief from a competent Mexican court to prevent irreparable harm. Claims involving intellectual property infringement may be brought before the IMPI or competent courts without first going through arbitration.
+
+INTERNATIONAL CUSTOMERS: If you reside outside México, you acknowledge that these Terms are governed by Mexican law and that disputes will be resolved in México as described above. You waive any objection to this jurisdiction.`
   },
   {
     title: "GOVERNING LAW & JURISDICTION",
     icon: "19",
-    content: `These Terms shall be governed by and construed in accordance with the laws of the United States and the laws of the state in which Muscle Yummi Mami is domiciled, without regard to conflict-of-law principles. To the extent any dispute is not subject to arbitration, you agree to submit to the exclusive personal jurisdiction of the state and federal courts located in that jurisdiction and waive any objection to such jurisdiction or venue.`
+    content: `These Terms shall be governed by and construed in accordance with the federal laws of the United Mexican States, including but not limited to:
+
+• Código Civil Federal
+• Código de Comercio
+• Ley Federal de Protección al Consumidor (LFPC)
+• Ley Federal de Protección a la Propiedad Industrial (LFPPI)
+• Ley Federal del Derecho de Autor (LFDA)
+• Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)
+
+Without regard to conflict-of-law principles. To the extent any dispute is not subject to arbitration, you agree to submit to the exclusive personal jurisdiction of the competent courts of Hermosillo, Sonora, México, and expressly waive any objection to such jurisdiction or venue.
+
+Nothing in these Terms is intended to limit any mandatory rights you may have under the consumer protection laws of your own country. However, the governing law and venue for all disputes shall be as stated above.`
   },
   {
     title: "PRIVACY & CUSTOMER DATA",
     icon: "20",
-    content: `Your personal information — including your name, email address, shipping address, and purchase history — is collected and used solely to process and fulfill your orders, communicate with you about your account, and improve our services. We do not sell, rent, or share your personal information with third parties for their own marketing purposes.
+    content: `Muscle Yummi Mami collects and processes personal data in compliance with the Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) and its Reglamento. As a data controller ("responsable"), we process your personal data solely to fulfill orders, communicate with you, and improve our services.
 
-We use industry-standard security measures to protect your data. However, no method of electronic transmission or storage is fully secure, and we cannot guarantee absolute data security.
+YOUR RIGHTS UNDER LFPDPPP (ARCO RIGHTS):
+• Acceso — Right to know what personal data we hold about you
+• Rectificación — Right to correct inaccurate data
+• Cancelación — Right to request deletion of your data
+• Oposición — Right to object to certain processing activities
 
-For full details on how we collect, use, and protect your data, please review our Privacy Policy at musclemami.fit/privacy. Our Privacy Policy is incorporated into these Terms by reference.`
+To exercise your ARCO rights, contact privacidad@musclemami.fit. We will respond within 20 business days as required by law.
+
+INTERNATIONAL CUSTOMERS:
+• EU/EEA Customers (GDPR): You have additional rights including data portability and the right to lodge a complaint with your local supervisory authority. We process EU personal data based on your consent and/or contract performance.
+• California Customers (CCPA): You have the right to know what personal data we collect, the right to delete it, and the right to opt out of any sale of personal data. We do not sell your personal data.
+
+We do not sell, rent, or share your personal information with third parties for their own marketing purposes. We use industry-standard security measures to protect your data. For full details, review our Privacy Policy at musclemami.fit/privacy, which is incorporated into these Terms by reference.`
   },
   {
-    title: "SALES TAX",
+    title: "TAXES & IVA",
     icon: "21",
-    content: `Sales tax is collected on orders shipped to states where Muscle Yummi Mami has a tax nexus obligation under applicable state and federal law. The applicable tax rate is determined by your shipping address and is calculated at checkout. Tax rates are set by state and local governments and are subject to change without notice.
+    content: `MEXICAN CUSTOMERS: All prices displayed on this site include or may be subject to the Impuesto al Valor Agregado (IVA) at the applicable rate of 16%, as required by the Ley del Impuesto al Valor Agregado. The applicable tax will be reflected at checkout. We issue electronic invoices (CFDI) in compliance with Mexican tax law (SAT requirements) upon request — contact contact@musclemami.fit with your RFC and fiscal data.
 
-International customers are responsible for all applicable VAT, GST, import duties, and local taxes as required by their jurisdiction.`
+INTERNATIONAL CUSTOMERS: Prices shown may not include the taxes or import duties applicable in your country. International customers are responsible for all applicable VAT, GST, sales tax, import duties, and local taxes as required by their jurisdiction. Muscle Yummi Mami does not collect or remit taxes on behalf of customers outside México, except where required by local law.`
   },
   {
     title: "SEVERABILITY, WAIVER & ENTIRE AGREEMENT",
     icon: "22",
-    content: `SEVERABILITY: If any provision of these Terms is found by a court or arbitrator of competent jurisdiction to be invalid, illegal, or unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, or severed from these Terms if modification is not possible — and the remaining provisions shall continue in full force and effect.
+    content: `SEVERABILITY: If any provision of these Terms is found by a court or arbitrator of competent jurisdiction to be invalid, illegal, or unenforceable under applicable Mexican law, that provision shall be modified to the minimum extent necessary to make it enforceable, or severed from these Terms if modification is not possible — and the remaining provisions shall continue in full force and effect.
 
 WAIVER: Our failure to enforce any right or provision of these Terms shall not constitute a waiver of that right or provision. No waiver of any breach shall constitute a waiver of any subsequent breach.
 
 ENTIRE AGREEMENT: These Terms, together with our Privacy Policy, constitute the entire agreement between you and Muscle Yummi Mami with respect to your use of this site and the purchase of our products, and supersede all prior or contemporaneous agreements, representations, warranties, and understandings — whether written or oral — relating to the same subject matter.
 
-ASSIGNMENT: You may not assign or transfer any rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations freely.`
+ASSIGNMENT: You may not assign or transfer any rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations freely.
+
+LANGUAGE: These Terms are written in English. In the event of any conflict between an English version and any translation, the English version shall prevail, except where Mexican law requires otherwise.`
   },
   {
     title: "CONTACT & LEGAL NOTICES",
     icon: "23",
     content: `For general inquiries:       contact@musclemami.fit
 For legal matters:             legal@musclemami.fit
-For IP / DMCA notices:      legal@musclemami.fit
+For IP / brand enforcement:  legal@musclemami.fit
+For privacy / ARCO rights:   privacidad@musclemami.fit
 Website:                           musclemami.fit
 Instagram:                        @muscleyummimami
 
+Company Location:              Hermosillo, Sonora, México
+
+PROFECO (Mexican consumers): www.profeco.gob.mx — 800-468-8722
+IMPI (IP complaints):             www.impi.gob.mx
+INAI (data privacy):               www.inai.org.mx
+
 All formal legal notices must be sent in writing to legal@musclemami.fit. We will acknowledge receipt and respond within 10 business days.
 
-© 2025 Muscle Yummi Mami — All Rights Reserved. Original designs. Built different.`
+© 2026 Muscle Yummi Mami — All Rights Reserved. Original designs. Built different.`
   }
 ];
 
@@ -327,8 +372,8 @@ export default function TermsPage() {
 
           {/* Toolbar */}
           <div style={{ background: "#e8e8e8", borderBottom: "1px solid #000", padding: "2px 8px", fontSize: 10, display: "flex", justifyContent: "space-between" }}>
-            <span>Legal Document — 23 Sections</span>
-            <span>Effective May 2025</span>
+            <span>Legal Document — 23 Sections — Governed by Mexican Law</span>
+            <span>Effective 2026 — Hermosillo, Sonora, México</span>
           </div>
 
           {/* Content body */}
@@ -341,11 +386,20 @@ export default function TermsPage() {
                 TERMS &amp; CONDITIONS
               </h1>
               <p style={{ fontSize: 10, color: "#666", marginTop: 6 }}>
-                musclemami.fit — Effective May 2025 — All 23 sections are legally binding upon use of this site.
+                musclemami.fit — Effective 2026 — Governed by the laws of the United Mexican States
+              </p>
+              <p style={{ fontSize: 9, color: "#888", marginTop: 4, lineHeight: 1.6 }}>
+                Muscle Yummi Mami operates as a Mexican company based in Hermosillo, Sonora, México.
+                These Terms are governed by Mexican federal law. Customers worldwide agree to these Terms when purchasing from this site.
               </p>
 
+              {/* Attorney notice */}
+              <div style={{ marginTop: 14, background: "#fffef0", border: "1px solid #e8b86d", padding: "8px 12px", fontSize: 9, color: "#7a5500", lineHeight: 1.7, textAlign: "left" }}>
+                <strong>⚠️ Legal Notice:</strong> These Terms are provided as a good-faith framework and should be reviewed by a licensed Mexican attorney (abogado) familiar with e-commerce, consumer protection (LFPC), and data privacy (LFPDPPP) law before going live commercially.
+              </div>
+
               {/* Quick-jump index */}
-              <div style={{ marginTop: 20, textAlign: "left", background: "#fff", border: "1px solid #ccc", padding: "12px 16px" }}>
+              <div style={{ marginTop: 16, textAlign: "left", background: "#fff", border: "1px solid #ccc", padding: "12px 16px" }}>
                 <div style={{ fontSize: 10, fontWeight: "bold", marginBottom: 8, letterSpacing: 1 }}>TABLE OF CONTENTS</div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3px 24px" }}>
                   {sections.map((s, i) => (
@@ -412,11 +466,11 @@ export default function TermsPage() {
               letterSpacing: 0.3
             }}>
               <div style={{ fontWeight: "bold", fontSize: 11, marginBottom: 6, letterSpacing: 2 }}>⚖️ FINAL NOTICE</div>
-              These Terms & Conditions constitute a complete and legally binding agreement between you and Muscle Yummi Mami. By using this site or purchasing our products, you confirm that you have read, understood, and agreed to every section above. Ignorance of these Terms is not a valid defense in any legal proceeding.
+              These Terms & Conditions constitute a complete and legally binding agreement between you and Muscle Yummi Mami, a company operating under the laws of the United Mexican States, domiciled in Hermosillo, Sonora, México. By using this site or purchasing our products, you confirm that you have read, understood, and agreed to every section above. Ignorance of these Terms is not a valid defense in any legal proceeding.
               <br /><br />
               We built this brand from nothing. We protect it like everything. Respect the work.
               <br /><br />
-              <span style={{ color: "#aaa", fontSize: 9 }}>© 2025 Muscle Yummi Mami. All Rights Reserved. Original designs. Built different.</span>
+              <span style={{ color: "#aaa", fontSize: 9 }}>© 2026 Muscle Yummi Mami. All Rights Reserved. Original designs. Built different. — Hermosillo, Sonora, México</span>
             </div>
 
           </div>
@@ -434,8 +488,8 @@ export default function TermsPage() {
             fontSize: 9,
             color: "#555"
           }}>
-            <span>musclemami.fit/terms — 23 sections — Effective May 2025</span>
-            <span>© 2025 Muscle Yummi Mami</span>
+            <span>musclemami.fit/terms — 23 sections — Governing Law: México</span>
+            <span>© 2026 Muscle Yummi Mami</span>
           </div>
 
         </div>
